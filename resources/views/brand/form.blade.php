@@ -4,7 +4,7 @@
         
         <div class="form-group">
             {{ Form::label('Categoria') }}
-            {{ Form::select('category_id', $categories, $brand->category_id, ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => 'Category Id']) }}
+            {{ Form::select('category_id', $categories, $brand->category_id, ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una Categoria:']) }}
             {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
         </div> 
 

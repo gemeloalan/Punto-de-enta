@@ -39,29 +39,20 @@ class BrandController extends Controller
         return view('brand.create', compact('brand', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
         request()->validate(Brand::$rules);
-
+        
         $brand = Brand::create($request->all());
         alert()->success('Marca Correctamente Agregada', 'Gracias ');
-
+        
         return redirect()->route('brands.index')
-            ->with('success', 'Se agrego la marca ');
+        ->with('success', 'Se agrego la marca ');
+        dd($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($id)
     {
         $brand = Brand::find($id);
@@ -93,7 +84,7 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        request()->validate(Brand::$rules);
+        request()->validate(Brand::$rule);
 
         $brand->update($request->all());
         alert()->success('Marca Correctamente Actualizada', 'Gracias ');

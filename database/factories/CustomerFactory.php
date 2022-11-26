@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Municipality;
+use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,13 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            //
-        ];
+            'nombre' => $this->faker->name(),
+            'correo' =>$this->faker->companyEmail(), 
+            'telefono' =>$this->faker->e164PhoneNumber(),
+            'direccion' =>$this->faker->address(),
+            'state_id'=>State::inRandomOrder()->first()->id,
+            'municipality_id'=>Municipality::inRandomOrder()->first()->id,
+
+               ];
     }
 }

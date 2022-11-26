@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Validation\Rules\Unique;
@@ -29,8 +30,12 @@ use SoftDeletes;
 
 		'name' => ['required', 'min:3', 'unique:categories,name'],
     ];
+    static $rule = [
 
-    protected $perPage = 20;
+		'name' => ['required', 'min:3'],
+    ];
+
+    protected $perPage = 1000;
 
     /**
      * Attributes that should be mass-assignable.
@@ -39,6 +44,7 @@ use SoftDeletes;
      */
     protected $fillable = ['name'];
 
+    use HasFactory;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

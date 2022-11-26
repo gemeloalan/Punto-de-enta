@@ -27,8 +27,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $municipality->state->nombre }}
-                        </div>
+                            @isset( $municipality->state->nombre)
+                            {{ $municipality->state->nombre}}
+                            @else <p class="ala">No hay registro</p>
+                            @endisset
+                                                    </div>
 
                     </div>
                 </div>

@@ -2,29 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-/**
- * Class State
- *
- * @property $id
- * @property $nombre
- * @property $created_at
- * @property $updated_at
- *
- * @property Municipality[] $municipalities
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
+
 class State extends Model
 {
   use SoftDeletes;
+  use HasFactory;
     
     static $rules = [
+		'nombre' => ['required', 'min:3', 'unique:states,nombre'],
+    ];
+    static $rule = [
 		'nombre' => ['required', 'min:3'],
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000;
 
     /**
      * Attributes that should be mass-assignable.

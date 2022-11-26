@@ -35,7 +35,6 @@ class MunicipalityController extends Controller
     {
         $municipality = new Municipality();
         $states = State::pluck('nombre', 'id');
-        $states = State::pluck('nombre', 'id');
         return view('municipality.create', compact('municipality', 'states'));
     }
 
@@ -94,7 +93,7 @@ alert()->success('Municipio Agregado Correctamente ', 'Gracias ');
      */
     public function update(Request $request, Municipality $municipality)
     {
-        request()->validate(Municipality::$rules);
+        request()->validate(Municipality::$rule);
 
         $municipality->update($request->all());
         alert()->success('Municipio Actualizado Correctamente ', 'Gracias ');

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            'nombre'=>$this->faker->name()
+            'nombre'=>$this->faker->name(),
+            'category_id'=>Category::inRandomOrder()->first()->id,
         ];
     }
 }

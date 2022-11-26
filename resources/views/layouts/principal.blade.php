@@ -97,6 +97,7 @@
                         <h6 class="collapse-header">Clientes:</h6>
                         <a class="collapse-item" href="{{ route('states.index') }}">Estados</a>
                         <a class="collapse-item" href="{{ route('municipalities.index') }}">Municipios</a>
+                        <a class="collapse-item" href="{{ route('customers.index') }}">Clientes</a>
                       {{--   <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a> --}}
                     </div>

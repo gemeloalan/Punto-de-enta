@@ -71,7 +71,7 @@ Estado
                                             @csrf @method('DELETE')
                                             <div class="modal-footer">
                                                <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancelar</button>
-                                               <button type="submit" href="#" class="btn btn-primary">Borrar Producto</button>
+                                               <button type="submit" href="#" class="btn btn-primary">Borrar Estado</button>
                                              </div>
                                             </div>
                                             </div>

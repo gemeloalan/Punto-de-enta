@@ -46,7 +46,18 @@
                                                     <td class="text-center">{{ ++$i }}</td>
                                                     
                                                         <td class="text-center">{{ $municipality->nombre }}</td>
-                                                        <td class="text-center">{{ $municipality->state->nombre}}</td>
+                                                        <td class="text-center">
+                                                            
+                                                           
+                                                            @isset( $municipality->state->nombre)
+                                                            {{ $municipality->state->nombre}}
+                                                            @else <p class="ala">No hay registro</p>
+                                                            @endisset
+                                                            
+                                                            
+                                                        
+                                                        
+                                                        </td>
                                                     <td class="text-center">
                                                             <a class="btn " href="{{ route('municipalities.show',$municipality->id) }}"><i class="far fa-eye"></i> </a>
                                                             <a class="btn " href="{{ route('municipalities.edit',$municipality->id) }}"><i class="far fa-edit"></i> </a>
@@ -68,7 +79,7 @@
                                                 @csrf @method('DELETE')
                                                 <div class="modal-footer">
                                                    <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancelar</button>
-                                                   <button type="submit" href="#" class="btn btn-primary">Borrar Producto</button>
+                                                   <button type="submit" href="#" class="btn btn-primary">Borrar Municipio</button>
                                                  </div>
                                                 </div>
                                                 </div>

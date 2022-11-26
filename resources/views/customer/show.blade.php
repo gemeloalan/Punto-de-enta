@@ -22,7 +22,14 @@
                     <div class="card-body">
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $customer->state->nombre  }}
+                           
+                                @isset( $customer->state->nombre)
+                                {{ $customer->state->nombre}}
+                                @else <p class="ala">No hay registro</p>
+                                @endisset
+                                
+                            
+                            
                         </div>
                         <div class="form-group">
                             <strong>Municipio:</strong>

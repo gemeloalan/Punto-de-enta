@@ -6,6 +6,9 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+// use Barryvdh\DomPDF\PDF;
+// use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class ProductController
@@ -13,11 +16,7 @@ use Illuminate\Http\Request;
  */
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index()
     {
         $products = Product::paginate();
@@ -25,12 +24,24 @@ class ProductController extends Controller
         return view('product.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
     }
+    public function pdf()
+    {
+        $products = Product::paginate();
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
+        // return $pdf->stream();
+        $pdf = PDF::loadView('product.pdf',['products'=>$products]);
+        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
+        // return $pdf->stream();
+        return $pdf->download('Productos.pdf');
+        // alert()->info('Comenzara la descarga del PDF', ' ');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+        // return view(' .pdf', compact('products'));
+           
+    }
+
+  
     public function create()
     {
         $product = new Product();
@@ -39,12 +50,7 @@ class ProductController extends Controller
         return view('product.create', compact('product', 'categories', 'brands'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         request()->validate(Product::$rules);
@@ -56,12 +62,7 @@ class ProductController extends Controller
             ->with('success', 'Producto Agregado Correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($id)
     {
         $product = Product::find($id);
@@ -69,12 +70,7 @@ class ProductController extends Controller
         return view('product.show', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit($id)
     {
         $product = Product::find($id);
@@ -83,16 +79,10 @@ class ProductController extends Controller
         return view('product.edit', compact('product', 'categories', 'brands'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Product $product
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, Product $product)
     {
-        request()->validate(Product::$rules);
+        request()->validate(Product::$rule);
 
         $product->update($request->all());
         alert()->success('Producto Correctamente Actualizado', 'Gracias ');
@@ -101,17 +91,17 @@ class ProductController extends Controller
             ->with('success', 'Producto Actualizado Correctamente');
     }
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
+    
     public function destroy($id)
+    
     {
+        $categories = Category::pluck('name', 'id');
+        $brands = Brand::pluck('nombre', 'id');
         $product = Product::find($id)->delete();
         alert()->success('Producto Correctamente Eliminado', 'Gracias ');
 
-        return redirect()->route('products.index')
+        return redirect()->route('products.index', compact('brands', 'categories'))
             ->with('success', 'Producto Eliminado Correctamente');
     }
+ 
 }

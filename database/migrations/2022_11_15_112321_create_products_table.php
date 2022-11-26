@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->nullable();
             $table->string('descripcion');
-            $table->double('precio');
+            $table->decimal("precio", 9, 2);
             $table->bigInteger('stock');
             $table->bigInteger('total');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('Set Null');

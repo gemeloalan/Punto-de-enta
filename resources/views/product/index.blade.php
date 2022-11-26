@@ -21,8 +21,15 @@ Productos
                                 <div class="float-right">
                                     <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm float-right"
                                         data-placement="left">
-                                        {{ __('Nuevo Producto') }}
+
+                                        {{ __('Nuevo Producto') }} <i class="far fa-solid fa-plus-square"></i>
                                     </a>
+                                    <a href="{{ route('products.pdf') }}" class="btn btn-primary btn-sm float-right"
+                                        data-placement="left">
+                                        <i class="far fa-solid fa-file-pdf"></i>
+                                    </a>
+
+                                    
                                 </div>
                             </div>
                         </div>
@@ -58,8 +65,22 @@ Productos
                                             <td class="text-center">{{ $product->precio }}</td>
                                             <td class="text-center">{{ $product->stock }}</td>
                                             <td class="text-center">{{ $product->total }}</td>
-                                            <td class="text-center">{{ $product->category->name }}</td>
-                                            <td class="text-center">{{ $product->brand->nombre }}</td>
+                                            <td class="text-center">
+                                                @isset($product->category->name)
+                                                    
+                                                {{ $product->category->name }}
+                                                @else <p class="ala">NO hay registro</p>
+                                                @endisset
+                                            
+                                            </td>
+                                            <td class="text-center ">
+                                                @isset($product->brand->nombre)
+
+                                                {{ $product->brand->nombre }}
+                                                    @else <p class="ala">No hay registro</p>
+                                                @endisset
+                                            
+                                            </td>
                                             <td>
                                                 <a class="btn " href="{{ route('products.show',$product->id) }}"><i
                                                         class="far fa-eye"></i> </a>

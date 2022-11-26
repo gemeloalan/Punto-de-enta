@@ -15,7 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resurces/js/app.js'])
 </head>
 <body>
     <div id="app">
@@ -39,7 +39,9 @@
                             <a class="nav-link noma" href="{{ route('products.index') }}">{{ __('Productos') }}/</a>
                             <a class="nav-link noma" href="{{ route('states.index') }}">{{ __('Estados') }}/</a>
                             <a class="nav-link noma" href="{{ route('municipalities.index') }}">{{ __('Municipios') }}/</a>
-                            <a class="nav-link noma" href="{{ route('customers.index') }}">{{ __('Clientes') }}</a>
+                            <a class="nav-link noma" href="{{ route('customers.index') }}">{{ __('Clientes') }}/</a>
+                            <a class="nav-link noma" href="{{ route('sales.index') }}">{{ __('Ventas') }}/</a>
+                            <a class="nav-link noma" href="{{ route('product-sale.index') }}">{{ __('Detalle de ventas') }}</a>
                         
                         
                     </ul>

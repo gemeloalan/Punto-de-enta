@@ -17,7 +17,7 @@ class StateFactory extends Factory
     public function definition()
     {
         return [
-            'nombre'=>$this->faker->name()
+            'nombre'=>$this->faker->state()
         ];
     }
 }

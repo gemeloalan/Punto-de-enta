@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('Estado') }}
-            {{ Form::select('state_id', $states, $municipality->state_id, ['class' => 'form-control' . ($errors->has('state_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el estado']) }}
+            {{ Form::select('state_id', $states, $municipality->state_id, ['class' => 'form-control' . ($errors->has('state_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el estado:']) }}
             {!! $errors->first('state_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

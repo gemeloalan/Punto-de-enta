@@ -46,7 +46,12 @@
                                                     <td class="tex-center">{{ ++$i }}</td>
                                                     
                                                         <td class="tex-center">{{ $brand->nombre }}</td>
-                                                        <td class="tex-center">{{ $brand->category->name }}</td>
+                                                        <td class="tex-center">
+                                                            @isset($brand->category->name)
+                                                               {{ $brand->category->name }}
+                                                               @else <p class="ala">Inactivo</p>  
+                                                            @endisset
+                                                        </td>
                                                         <td class="text-center">
                                                         <a class="btn " href="{{ route('brands.show',$brand->id) }}"><i class="far fa-eye"></i> </a>
                                                         <a class="btn" href="{{ route('brands.edit',$brand->id) }}"><i class="far  fa-edit"></i> </a>
@@ -67,7 +72,7 @@
                                                             @csrf @method('DELETE')
                                                             <div class="modal-footer">
                                                                <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancelar</button>
-                                                               <button type="submit" href="#" class="btn btn-primary">Borrar Producto</button>
+                                                               <button type="submit" href="#" class="btn btn-primary">Borrar Marca</button>
                                                              </div>
                                                             </div>
                                                             </div>

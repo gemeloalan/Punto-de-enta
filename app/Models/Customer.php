@@ -2,29 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class Customer
- *
- * @property $id
- * @property $nombre
- * @property $correo
- * @property $telefono
- * @property $direccion
- * @property $state_id
- * @property $created_at
- * @property $updated_at
- * @property $deleted_at
- *
- * @property State $state
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
+
 class Customer extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
     static $rules = [
 		'nombre' => 'required',
@@ -39,7 +25,7 @@ class Customer extends Model
 		'direccion' => ['required', 'string', 'max:255'],
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000;
 
     /**
      * Attributes that should be mass-assignable.

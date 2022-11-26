@@ -28,8 +28,10 @@
                         </div>
                         <div class="form-group">
                             <strong>Categoria:</strong>
-                            {{  $brand->category->name }}
-                        </div>
+                            @isset($brand->category->name)
+                            {{ $brand->category->name }}
+                            @else <p class="ala">No hay Registro</p>  
+                         @endisset                        </div>
 
                     </div>
                 </div>

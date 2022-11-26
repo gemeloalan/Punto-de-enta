@@ -22,8 +22,11 @@
                     <div class="card-body">
                         <div class="form-group">
                             <strong>Categoria:</strong>
+                            @isset($product->category->name)
+                                                    
                             {{ $product->category->name }}
-                        </div>
+                            @else <p class="ala">NO hay registro</p>
+                            @endisset                        </div>
                         <div class="form-group">
                             <strong>Marca:</strong>
                             {{ $product->brand->nombre }}

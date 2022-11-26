@@ -18,8 +18,12 @@
                                     </span>
                                      <div class="float-right">
                                         <a href="{{ route('customers.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                          {{ __('Nuevo Usuario') }}
+                                          {{ __('Nuevo Usuario') }} <i class="far fa-solid fa-plus-square"></i>
                                         </a>
+                                        <a href="{{ route('customers.pdf') }}" class="btn btn-primary btn-sm float-right"
+                                        data-placement="left">
+                                        <i class="far fa-solid fa-file-pdf"></i>
+                                    </a>
                                       </div>
                                 </div>
                             </div>
@@ -53,10 +57,26 @@
                                                         <td class="text-center">{{ $customer->correo }}</td>
                                                         <td class="text-center">{{ $customer->telefono }}</td>
                                                         <td class="text-center">{{ $customer->direccion }}</td>
-                                                        <td class="text-center">{{ $customer->state->nombre}}</td>
-                                                        <td class="text-center">{{ $customer->municipality->nombre}}</td>
+
+
+                                                        <td class="text-center ">
+                                                            @isset( $customer->state->nombre)
+                                                            {{ $customer->state->nombre}}
+                                                            @else <p class="ala">No hay registro</p>
+                                                            @endisset
+                                                            
+                                                        
+                                                        </td>
+                                                        <td class="text-center ">
+                                                            @isset($customer->municipality->nombre)
+                                                              {{ $customer->municipality->nombre}}
+                                                              @else <p class="ala">NO hay registro</p>  
+                                                            @endisset
+                                                            
+                                                        
+                                                        </td>
                                                         {{-- <td class="text-center">{{ $customer->municipality_id}}</td> --}}
-                                                    <td class="text-center">
+                                                    <td class="text-center col-sm-3">
                                                             <a class="btn  " href="{{ route('customers.show',$customer->id) }}"><i class="far fa-eye"></i> </a>
                                                             <a class="btn " href="{{ route('customers.edit',$customer->id) }}"><i class="far fa-edit"></i> </a>
                                                            <a  class="btn" data-toggle="modal" data-target="#deleteMdl{{ $customer->id }}" "> <i class="far fa-trash-alt "></i></a>
@@ -75,7 +95,7 @@
                                                         @csrf @method('DELETE')
                                                         <div class="modal-footer">
                                                            <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancelar</button>
-                                                           <button type="submit" href="#" class="btn btn-primary">Borrar Producto</button>
+                                                           <button type="submit" href="#" class="btn btn-primary">Borrar Cliente</button>
                                                          </div>
                                                         </div>
                                                         </div>

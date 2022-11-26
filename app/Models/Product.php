@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
@@ -26,9 +27,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use SoftDeletes;
+    use HasFactory;
+
     
     static $rules = [
-		'nombre' => ['required', 'string', 'unique:products,nombre'],
+		'nombre' => ['required' , 'string', 'unique:products,nombre'],
+		'descripcion' => ['required', 'max:255'],
+		'precio' => ['required', 'numeric'],
+		'stock' => ['required', 'integer'],
+		'total' => ['required', 'numeric'],
+		'category_id' => ['required'],
+		'brand_id' => ['required'],
+    ];
+    
+    static $rule = [
+		'nombre' => ['required', 'string'],
 		'descripcion' => ['required', 'max:255'],
 		'precio' => ['required', 'numeric'],
 		'stock' => ['required', 'integer'],
@@ -37,7 +50,7 @@ class Product extends Model
 		'brand_id' => ['required'],
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000;
 
     /**
      * Attributes that should be mass-assignable.
@@ -60,7 +73,7 @@ class Product extends Model
      */
     public function category()
     {
-        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+        return $this->belongsTo('App\Models\Category');
     }
     
 

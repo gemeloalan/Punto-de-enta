@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
@@ -20,19 +21,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Municipality extends Model
 {
   use SoftDeletes;
+  use HasFactory;
+
     
     static $rules = [
-		'nombre' => 'required',
+		'nombre' => 'required', 'unique:municipalities,nombre',
+    
+		'state_id' => 'required',
+    ];
+    static $rule = [
+		'nombre' => 'required' ,
+    
 		'state_id' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000;
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
+   
     protected $fillable = ['nombre','state_id'];
 
 
