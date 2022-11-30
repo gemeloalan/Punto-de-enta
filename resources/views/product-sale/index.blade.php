@@ -49,7 +49,8 @@
                                                     <th class="text-center">Cantidad</th>
                                                     <th class="text-center">Precio</th>
                                                     <th class="text-center">Descuento</th>
-                                                    <th class="text-center">Ver</th>
+                                                    <th class="text-center">Total</th>
+                                                    <th>Ver</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,9 +60,10 @@
                                                         <td class="text-center">{{ ++$i }}</td>
                                                         <td class="text-center">{{ $productSale->sale_id }}</td>
                                                         <td class="text-center">{{ $productSale->product->nombre }}</td>
-                                                        <td class="text-center">{{ $productSale->cantidad }}</td>
-                                                        <td class="text-center">{{ $productSale->precio }}</td>
+                                                        <td class="text-center">{{ $productSale->cantidad }}pzs.</td>
+                                                        <td class="text-center">${{ $productSale->precio }}</td>
                                                         <td class="text-center">{{ $productSale->descuento }}%</td>
+                                                        <td class="text-center">${{ $productSale->product->total }}</td>
                                                         <td class="text-center">
                                                             <a class="btn " href="{{ route('product-sale.show',$productSale->id) }}"><i class="far fa-eye"></i> </a>
                                                             {{-- <form action="{{ route('product-sale.destroy',$productSale->id) }}" method="POST">

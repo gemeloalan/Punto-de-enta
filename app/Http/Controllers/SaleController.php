@@ -7,9 +7,17 @@ use App\Models\Product;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
+/**
+ * Class SaleController
+ * @package App\Http\Controllers
+ */
 class SaleController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $sales = Sale::paginate();
@@ -18,36 +26,48 @@ class SaleController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $sales->perPage());
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $sale = new Sale();
-        $products = Product::pluck('nombre', 'id', 'stock');
-        $customers = Customer::pluck('nombre', 'id');
+        // $customers = Customer::all();
+        $customers = Customer::select('nombre', 'id')->get();
+        // dd($customers->all());
+        // $products = Product::all();
+        $products = Product::select('nombre','precio', 'id', 'stock')->get() ;
 
+        // return $products;
 
-        
-        return view('sale.create', compact('sale','products',  'customers'));
+        return view('sale.create', compact('sale', 'customers', 'products'));
     }
+
 
     public function store(Request $request)
-    {
+    { 
+            
         request()->validate(Sale::$rules);
 
-        $sale = Sale::create($request->all());
-        foreach ($request->product_id as $key =>$products){
-            $resultado[] = array(
-            "product_id"=>$request->product_id[$key]
-            , "cantidad"=>$request->cantidad[$key]
-            , "precio"=>$request->precio[$key]
-            , "descuento"=>$request->descuento[$key]);
-            $sale->productSales()->createMany($resultado); 
-         }
-         alert()->success('Buen trabajo');
+        $productoVendido = Sale::createMany($request->all());
+        $products = Product::select('nombre','precio', 'id', 'stock')->get() ;
+
+        foreach ($products as $product) {
+        $productoActualizado = Product::find($product->id);
+        $productoActualizado->existencia -= $productoVendido->cantidad;
+        $productoActualizado->saveOrFail();
+        }
+        // $sale = Sale::firstOrCreate($request->all());
+        // $sale->sale()->associate($sale   );
+        alert()->success('Exito', 'Venta Finalizada');
 
         return redirect()->route('sales.index')
-            ->with('success', 'Venta Exitosa.');
+            ->with('success', 'Venta Existosa.');
     }
 
+   
     public function show($id)
     {
         $sale = Sale::find($id);
@@ -55,30 +75,36 @@ class SaleController extends Controller
         return view('sale.show', compact('sale'));
     }
 
+
     public function edit($id)
     {
         $sale = Sale::find($id);
-        $products = Product::pluck('nombre ','id');
-        $customers = Customer::pluck('nombre ','id');
+        $customers = Customer::pluck('nombre', 'id');
+        $products = Product::pluck('nombre', 'id');
 
-        return view('sale.edit', compact('sale' ,'products', 'customers'));
+
+        return view('sale.edit', compact('sale', 'customers', 'products'));
     }
 
+    
     public function update(Request $request, Sale $sale)
     {
         request()->validate(Sale::$rules);
 
         $sale->update($request->all());
+        alert()->success('Exito', 'Venta Actualizada');
 
         return redirect()->route('sales.index')
-            ->with('success', 'Venta corregida correctamente');
+            ->with('success', 'Venta actualizada con exito');
     }
 
+  
     public function destroy($id)
     {
         $sale = Sale::find($id)->delete();
-alert()->success('La venta se elimino con exito');
+        alert()->success('Exito', 'Venta Eliminada');
+
         return redirect()->route('sales.index')
-            ->with('success', 'Venta Eliminada correctamente');
+            ->with('success', 'Venta Eliminada con exito');
     }
 }

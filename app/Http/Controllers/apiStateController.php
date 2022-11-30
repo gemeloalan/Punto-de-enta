@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
  * Class StateController
  * @package App\Http\Controllers
  */
-class StateController extends Controller
+class apiStateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,7 @@ class StateController extends Controller
      */
     public function index()
     {
-        $states = State::paginate();
-
-        return view('state.index', compact('states'))
-            ->with('i', (request()->input('page', 1) - 1) * $states->perPage());
+    return State::all(); 
     }
 
     /**
@@ -57,10 +54,9 @@ class StateController extends Controller
 
     public function show($id)
     {
-        $state = State::find($id);
+        $states = State::find($id);
 
-
-        return view('state.show', compact('state'));
+        return $states;
     }
 
   

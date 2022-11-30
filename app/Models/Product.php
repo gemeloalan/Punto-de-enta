@@ -75,6 +75,10 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+    public function sales()
+    {
+        return $this->hasMany('App\Models\Sales', 'product_id', 'id');
+    }
     
 
 }

@@ -56,12 +56,13 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Inicia Sesion') }}
                                 </button>
+                              <a href="{{ route('register') }}" class="btn btn-primary">Registrate</a>
 
-                                @if (Route::has('password.request'))
+                           {{--      @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>

@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('template_title')
-    Update Sale
+    Actualizar Venta
 @endsection
 
 @section('content')
@@ -13,7 +13,10 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Sale</span>
+                        <span class="card-title">Actualizar Venta</span>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('sales.create') }}"> Regresar<i class="fas fa-arrow-alt-circle-right"></i></a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('sales.update', $sale->id) }}"  role="form" enctype="multipart/form-data">

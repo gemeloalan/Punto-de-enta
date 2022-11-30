@@ -15,19 +15,14 @@ use Barryvdh\DomPDF\Facade\Pdf;
  * Class ProductController
  * @package App\Http\Controllers
  */
-class ProductController extends Controller
+class apiProductController extends Controller
 {
  
     public function index()
     {
-        $products = Product::paginate();
-        $users = DB::table('products')
-                ->orderBy('id', 'asc')
-                ->get();
-
-        return view('product.index', compact('products'))
-            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
-    }
+      
+    return Product::all();
+}
     public function pdf()
     {
         $products = Product::paginate();
@@ -75,9 +70,9 @@ class ProductController extends Controller
   
     public function show($id)
     {
-        $product = Product::find($id);
+        $products = Product::find($id);
 
-        return view('product.show', compact('product'));
+        return $products;
     }
 
  

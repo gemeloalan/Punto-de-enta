@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Product Sale</span>
+                            <span class="card-title">Detalles de ventas</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('product-sale.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('product-sale.index') }}"> Regresar</a>
                         </div>
                     </div>
 
@@ -22,27 +22,31 @@
                         
                         <div class="form-group">
                             <strong>ID venta:</strong>
-                            {{ $productSale->sale_id }}
+                            #{{ $productSale->sale_id }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $productSale->sale->status }}
+                            {{ $productSale->sale->status }}.
                         </div>
                         <div class="form-group">
-                            <strong>Product Id:</strong>
-                            {{ $productSale->product->nombre }}
+                            <strong>Producto:</strong>
+                            {{ $productSale->product->nombre }}.
                         </div>
                         <div class="form-group">
                             <strong>Cantidad:</strong>
-                            {{ $productSale->cantidad }}
+                            {{ $productSale->cantidad }}pzs.
                         </div>
                         <div class="form-group">
                             <strong>Precio:</strong>
-                            {{ $productSale->precio }}
+                           $ {{ $productSale->precio }}
                         </div>
                         <div class="form-group">
                             <strong>Descuento:</strong>
                             {{ $productSale->descuento }}%
+                        </div>
+                        <div class="form-group">
+                            <strong>Descuento:</strong>
+                            $ {{ $productSale->product->total }}
                         </div>
 
                     </div>

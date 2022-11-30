@@ -49,7 +49,7 @@
                                                         <td class="tex-center">
                                                             @isset($brand->category->name)
                                                                {{ $brand->category->name }}
-                                                               @else <p class="ala">Inactivo</p>  
+                                                               @else <p class="ala">No hay registro </p>  
                                                             @endisset
                                                         </td>
                                                         <td class="text-center">

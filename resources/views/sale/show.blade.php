@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Venta: <b>{{ $sale->id }}</b></span>
+                            <span class="card-title">Ver venta</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('sales.index') }}"> Regresar</a>
@@ -22,7 +22,7 @@
                         
                         <div class="form-group">
                             <strong>Cliente:</strong>
-                            {{ $sale->customer->nombre}}
+                            {{ $sale->customer->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Producto:</strong>
@@ -37,7 +37,7 @@
                             {{ $sale->total }}
                         </div>
                         <div class="form-group">
-                            <strong>Estado:</strong>
+                            <strong>Status:</strong>
                             {{ $sale->status }}
                         </div>
 

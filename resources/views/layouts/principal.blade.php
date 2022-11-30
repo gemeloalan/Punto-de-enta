@@ -83,6 +83,7 @@
                     </div>
                 </div>
             </li>
+            
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -107,6 +108,22 @@
             <!-- Divider -->
               <!-- Divider -->
               <hr class="sidebar-divider d-none d-md-block">
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Mantenimiento-Ventas</span>
+                </a>
+                <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Selecciona:</h6>
+                        <a class="collapse-item" href="{{ route('sales.index') }}">Ventas</a>
+                        <a class="collapse-item" href="{{ route('product-sale.index') }}">Detalle de Ventas</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block">
+
 
               <!-- Sidebar Toggler (Sidebar) -->
               <div class="text-center d-none d-md-inline">
@@ -209,6 +226,7 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/ventas.js') }}"></script>
 
     <!-- Page level plugins -->
 {{--     <script src="vendor/chart.js/Chart.min.js"></script>

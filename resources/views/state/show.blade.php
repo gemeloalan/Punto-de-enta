@@ -23,12 +23,7 @@
                         <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $state->nombre }} <br>
-                            <strong>Municipios:</strong>
-                            @foreach ($municipalities as $municipality )
-                                <td>
-                                    <th>{{ $municipality ->nombre }}</th>
-                                </td>
-                            @endforeach
+                          
                         </div>
 
                     </div>

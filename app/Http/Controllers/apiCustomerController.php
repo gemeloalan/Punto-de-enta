@@ -11,7 +11,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
  * Class CustomerController
  * @package App\Http\Controllers
  */
-class CustomerController extends Controller
+class apiCustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +20,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate();
-
-        return view('customer.index', compact('customers'))
-            ->with('i', (request()->input('page', 1) - 1) * $customers->perPage());
+    return Customer::all();  
     }
     public function pdf()
     {
@@ -60,9 +57,9 @@ class CustomerController extends Controller
     
     public function show($id)
     {
-        $customer = Customer::find($id);
+             $customers = Customer::find($id);
 
-        return view('customer.show', compact('customer'));
+       return $customers;
     }
 
     public function edit($id)

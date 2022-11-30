@@ -21,11 +21,12 @@ class SaleFactory extends Factory
     public function definition()
     {
         return [
-            'fecha' => $this->faker->date('y-m-d'),
-            'status' => $this->faker->randomElement(['VALID', 'CANCELED']),
+            // 'fecha' => $this->faker->date('y-m-d'),
+            'status' => $this->faker->randomElement(['ACTIVO', 'INACTIVO']),
             'total' => $this->faker->randomfloat(2,20,4),
-            'product_id' => Product::inRandomOrder()->first()->id,
+            // 'tax' => $this->faker->randomfloat(2,20,4),
             'customer_id' => Customer::inRandomOrder()->first()->id,
+            'product_id' => Product::inRandomOrder()->first()->id,
             /* 'brand_id' => Brand::inRandomOrder()->first()->id,
             'brand_id' => Brand::inRandomOrder()->first()->id, */
         ];

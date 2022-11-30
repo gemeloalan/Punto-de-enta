@@ -2,6 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\apiCategoryController;
+use App\Http\Controllers\apiBrandController;
+use App\Http\Controllers\apiStateController;
+use App\Http\Controllers\apiMunicipalityController;
+use App\Http\Controllers\apiProductController;
+use App\Http\Controllers\apiCustomerController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +23,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return $request->user();   
 });
+route::apiResource('categories', apiCategoryController::class);
+route::apiResource('brands', apiBrandController::class);
+route::apiResource('states', apiProductController::class);
+route::apiResource('municipalities', apiStateController::class);
+route::apiResource('products', apiMunicipalityController::class);
+route::apiResource('customers', apiCustomerController::class);
+/* route::apiResource('customers', apiCategoryController::class);
+ */

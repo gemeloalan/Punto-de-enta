@@ -27,8 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Sale extends Model
 {
-    use SoftDeletes;
-    use HasFactory;
+    use SoftDeletes, HasFactory;
 
     static $rules = [
 		'fecha' => 'required',
@@ -36,7 +35,13 @@ class Sale extends Model
 		'status' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 50;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['customer_id','product_id','fecha','total','status'];
 
 
@@ -45,7 +50,7 @@ class Sale extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Models\Customer');
+        return $this->hasOne('App\Models\Customer', 'id', 'customer_id');
     }
     
     /**

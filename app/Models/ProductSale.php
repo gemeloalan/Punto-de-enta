@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -25,7 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ProductSale extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     static $rules = [
 		'cantidad' => 'required',
@@ -33,7 +34,7 @@ class ProductSale extends Model
 		'descuento' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 10;
 
     /**
      * Attributes that should be mass-assignable.

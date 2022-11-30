@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->foreignId('customer_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('product_id')->nullable()->constrained()->onDelete('set null');
-            $table->dateTime('fecha');
-            $table->decimal("total", 9, 2);
-            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('VALID');
+            // $table->dateTime('fecha');
+            $table->decimal('total', 9, 2);
+            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO');
 
 
 /*             $table->foreignId('brand_id')->nullable()->constrained()->onDelete('set null');

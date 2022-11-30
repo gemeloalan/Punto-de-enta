@@ -23,7 +23,7 @@ class ProductSaleController extends Controller
 
         $pdf = PDF::loadView('product-sale.pdf',['productSales'=>$productSales]);
         // return $pdf->stream();
-        return $pdf->download('Detalle de Ventas.pdf');
+        return $pdf->download('Reporte-Ventas.pdf');
 
 
     }
