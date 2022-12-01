@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        // Vamos bien
+        // Vamos bien uwu
        
          State::factory(15)->create();
          Municipality::factory(15)->create();
