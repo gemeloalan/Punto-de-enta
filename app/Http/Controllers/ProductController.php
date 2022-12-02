@@ -21,9 +21,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate();
-        $users = DB::table('products')
-                ->orderBy('id', 'asc')
-                ->get();
+       
 
         return view('product.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * $products->perPage());

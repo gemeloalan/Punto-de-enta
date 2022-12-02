@@ -56,9 +56,10 @@ Productos
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($products as $product)
+                                        @foreach ($products as $product )
                                         <tr>
 
+                                            
                                             <td class="text-center">{{ ++$i }}</td>
                                             <td class="text-center">{{ $product->nombre }}</td>
                                             <td class="text-center">{{ $product->descripcion }}</td>

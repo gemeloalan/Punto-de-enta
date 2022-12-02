@@ -18,9 +18,11 @@ return new class extends Migration
             $table->foreignId('customer_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('product_id')->nullable()->constrained()->onDelete('set null');
             // $table->dateTime('fecha');
-            $table->decimal('total', 9, 2);
+            $table->integer('cantidad');
+            $table->integer('total');
+            /* 
             $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO');
-
+ */
 
 /*             $table->foreignId('brand_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('customer_id')->nullable()->constrained()->onDelete('set null'); */

@@ -79,7 +79,9 @@
                                                     <td class="text-center col-sm-3">
                                                             <a class="btn  " href="{{ route('customers.show',$customer->id) }}"><i class="far fa-eye"></i> </a>
                                                             <a class="btn " href="{{ route('customers.edit',$customer->id) }}"><i class="far fa-edit"></i> </a>
-                                                           <a  class="btn" data-toggle="modal" data-target="#deleteMdl{{ $customer->id }}" "> <i class="far fa-trash-alt "></i></a>
+                                                           <a  class="btn" data-toggle="modal" data-target="#deleteMdl{{ $customer->id }}" >Eliminado
+                                                             <i class="far fa-trash-alt ">
+                                                                </i></a>
                                                     </td>
                                                     <div class="modal animated zoomIn" id="deleteMdl{{$customer->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg" role="document">

@@ -13,17 +13,17 @@ $(document) .ready(function () {
     function mostrarValores() {
 
     
-    datosProdpcto = document .getElementById('product_id').value.split('_');
+    datosProducto = document .getElementById('product_id').value.split('_');
     $("#precio").val(datosProducto[2]);
     $("#stock") . val (datosProducto[1]) ;
     }
 
 
 
-    function agregar()
+function agregar()
 datosProducto = document .getElementById('product_id').value.split('_');
 
-product_id = datosProducto[ 0];
+product_id = datosProducto[0];
 
 producto = $("#product_id option:selected") .text();
 

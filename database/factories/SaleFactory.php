@@ -22,8 +22,11 @@ class SaleFactory extends Factory
     {
         return [
             // 'fecha' => $this->faker->date('y-m-d'),
-            'status' => $this->faker->randomElement(['ACTIVO', 'INACTIVO']),
+/*             'status' => $this->faker->randomElement(['ACTIVO', 'INACTIVO']),
             'total' => $this->faker->randomfloat(2,20,4),
+            */ 
+             'cantidad' => $this->faker->randomfloat(0,20, 3),
+             'total' => $this->faker->randomfloat(0,20, 3),
             // 'tax' => $this->faker->randomfloat(2,20,4),
             'customer_id' => Customer::inRandomOrder()->first()->id,
             'product_id' => Product::inRandomOrder()->first()->id,

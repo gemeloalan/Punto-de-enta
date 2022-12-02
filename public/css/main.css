@@ -2,6 +2,10 @@
     color: black;
     text-shadow: 1px 1px .5px rgba(255,0,0,1);
 }
+select:hover,input:hover{
+
+   border-left: 5px solid rgb(0, 179, 255);
+}
 .ala:hover{
     background: black;
     border-left: 5px solid yellow;
@@ -106,7 +110,7 @@
 }
 .form-control:focus{
     animation: shake .5s;
-    border: 2px solid yellow;
+    border: 2px solid  yellow;
     outline: none;
     transition: all 1.3s ease;
     -webkit-transition: all 1.3s ease;
@@ -114,6 +118,7 @@
     -ms-transition: all 1.3s ease;
     -o-transition: all 1.3s ease;
     -webkit-animation: shake .5s;
+    box-shadow: 1px 7px 10px 5px gray;
 }
 .invalid-feedback{
     font-weight: bold;

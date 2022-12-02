@@ -37,9 +37,10 @@
                                                     <th class="text-center">No</th>
                                                     <th class="text-center">Clientes</th>
                                                     <th class="text-center">Productos</th>
+                                                    <th class="text-center">Precio</th>
                                                     <th class="text-center">Fecha</th>
+                                                    <th class="text-center">Cantidad</th>
                                                     <th class="text-center">Total</th>
-                                                    <th class="text-center">Status</th>
                                                     <th class="text-center">Acciones</th>
                                             </tr>
                                         </thead>
@@ -48,12 +49,37 @@
                                                 <tr>
                                                    
                                                     
-                                                        <td class="text-center">{{ ++$i }}</td>
-                                                        <td class="text-center">{{ $sale->customer->nombre }}</td>
-                                                        <td class="text-center">{{ $sale->product->nombre }}</td>
+                                                        <td class="text-center">{{ /* ++$isa */ $sale->id }}</td>
+
+                                                        <td class="text-center">
+                                                            @isset( $sale->customer->nombre )
+                                                            {{ $sale->customer->nombre }}
+                                                            @else
+                                                            <p class="ala">Cliente inactivo</p>
+                                                            @endisset
+                                                        </td>
+                                                        <td class="text-center">
+                                                            @isset( $sale->product->nombre )
+                                                            {{ $sale->product->nombre }}
+                                                            @else
+                                                            <p class="ala">Producto inactivo</p>
+                                                                
+                                                            @endisset</td>
+                                                        <td class="text-center">
+                                                            @isset( $sale->product->precio )
+                                                            {{ $sale->product->precio }}
+                                                            @else
+                                                            <p class="ala">Precio inactivo</p>
+                                                                
+                                                            @endisset
+                                                        </td>
                                                         <td class="text-center">{{ $sale->created_at }}</td>
-                                                        <td class="text-center">$   {{ $sale->total }}</td>
-                                                        <td class="text-center">{{ $sale->status }}</td>
+<?php 
+//$total  = $sale->product->precio * $sale->cantidad
+
+?>
+                                                        <td class="text-center">   {{ $sale->cantidad }}</td>
+                                                        <td class="text-center">{{ $sale->total   }}</td>
                                                     <td>
                                                             <a class="btn " href="{{ route('sales.show',$sale->id) }}"><i class="far fa-eye"></i> </a>
                                                             <a class="btn" href="{{ route('sales.edit',$sale->id) }}"><i class="far fa-edit"></i> </a>
@@ -95,4 +121,3 @@
         </div>
     </div>
 @endsection
-<script src="{{ asset('ventas') }}"></script>

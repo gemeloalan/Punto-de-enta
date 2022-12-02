@@ -63,7 +63,6 @@
                                                         <td class="text-center">{{ $productSale->cantidad }}pzs.</td>
                                                         <td class="text-center">${{ $productSale->precio }}</td>
                                                         <td class="text-center">{{ $productSale->descuento }}%</td>
-                                                        <td class="text-center">${{ $productSale->product->total }}</td>
                                                         <td class="text-center">
                                                             <a class="btn " href="{{ route('product-sale.show',$productSale->id) }}"><i class="far fa-eye"></i> </a>
                                                             {{-- <form action="{{ route('product-sale.destroy',$productSale->id) }}" method="POST">

@@ -30,8 +30,8 @@ class Sale extends Model
     use SoftDeletes, HasFactory;
 
     static $rules = [
-		'fecha' => 'required',
-		'total' => 'required',
+		/* 'fecha' => 'required',
+		'total' => 'required', */
 		'status' => 'required',
     ];
 
@@ -42,7 +42,7 @@ class Sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['customer_id','product_id','fecha','total','status'];
+    protected $fillable = ['customer_id','product_id',/* 'fecha', */'cantidad', 'total'/* ,'status' */];
 
 
     /**

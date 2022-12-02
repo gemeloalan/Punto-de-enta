@@ -5,25 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-/**
- * Class Product
- *
- * @property $id
- * @property $nombre
- * @property $descripcion
- * @property $precio
- * @property $stock
- * @property $total
- * @property $category_id
- * @property $brand_id
- * @property $created_at
- * @property $updated_at
- *
- * @property Brand $brand
- * @property Category $category
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
+
 class Product extends Model
 {
     use SoftDeletes;
@@ -50,7 +32,7 @@ class Product extends Model
 		'brand_id' => ['required'],
     ];
 
-    protected $perPage = 1000;
+    protected $perPage = 25;
 
     /**
      * Attributes that should be mass-assignable.
