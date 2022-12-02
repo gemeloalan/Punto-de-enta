@@ -19,27 +19,25 @@
                     </div>
 
         
-                <div class="form-group" >
-                    <label for="product_id">Producto</label>
-                    <select class="form-control" name="product_id" id="product_id"   placeholder="Selecciona un Producto:">
-                        <option value="" disabled selected>Selecciona un producto:</option>
-                    @foreach ($products as $product)
-                    <option value="{{$product->id}}" placeholder="Selecciona un producto">{{$product->nombre}}--Cantidad.{{$product->stock}}--${{$product->precio}}</option>
+                <div class="row">
+                    <div class="col-lg-6 form-group" >
+                        <label for="product_id" class="">Producto</label>
+                        <select class="form-control" name="product_id" id="product_id"   placeholder="Selecciona un Producto:">
+                            <option value="" disabled selected>Selecciona un producto:</option>
+                        @foreach ($products as $product)
+                        <option value="{{$product->id}}" placeholder="Selecciona un producto">{{$product->nombre}}--Cantidad.{{$product->stock}}--${{$product->precio}}</option>
                     
-                    @endforeach
-                </select>
-       
-                    </div>
-
-                   
-
-
+                        @endforeach
+                    </select>
+                        </div>
                     
-                    <div class="form-group">
-                      <label for="cantidad">Cantidad</label>
-                      <input type="number"
-                        class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId" placeholder="Escribe la cantidad de productos que deseas vender">
-                    </div>
+                    
+                        <div class="col-lg-6 form-group">
+                          <label for="cantidad">Cantidad</label>
+                          <input type="number"
+                            class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId" placeholder="Escribe la cantidad de productos que deseas vender">
+                        </div>
+                </div>
               
         
         
@@ -50,7 +48,7 @@
                 
         
         
-{{--         <br>
+ {{--         <br>
         <hr>
         
                 <div class="card">
@@ -121,4 +119,4 @@
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Finalizar</button>
     </div>
-</div>
+</div> --}}

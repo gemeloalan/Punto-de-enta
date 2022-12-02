@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductSale;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -12,10 +13,10 @@ class ProductSaleController extends Controller
 
     public function index()
     {
-        $productSales = ProductSale::paginate();
+        $sales = Sale::paginate();
 
-        return view('product-sale.index', compact('productSales'))
-            ->with('i', (request()->input('page', 1) - 1) * $productSales->perPage());
+        return view('product-sale.index', compact('sales'))
+            ->with('i', (request()->input('page', 1) - 1) * $sales->perPage());
     }
     public function pdf()
     {

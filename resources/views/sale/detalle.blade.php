@@ -17,10 +17,10 @@
                                         {{ __('Ventas') }}
                                     </span>
                                      <div class="float-right">
-                                        <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                          {{ __('Realizar una venta') }}
-                                        </a>
-                                        
+                                        <a href="{{ route('sales.pdf') }}" class="btn btn-primary btn-sm float-right"
+                                        data-placement="left">
+                                        <i class="far fa-solid fa-file-pdf"></i>
+                                    </a>
                                       </div>
                                 </div>
                             </div>
@@ -81,33 +81,7 @@
 ?>
                                                         <td class="text-center">   {{ $sale->cantidad }}</td>
                                                         <td class="text-center">{{ $sale->total   }}</td>
-                                                    <td>
-                                                            <a class="btn " href="{{ route('sales.show',$sale->id) }}"><i class="far fa-eye"></i> </a>
-                                                            <a class="btn" href="{{ route('sales.edit',$sale->id) }}"><i class="far fa-edit"></i> </a>
-                                                            <a class="btn" data-toggle="modal" data-target="#deleteMdl{{ $sale->id }}" "><i class="far fa-trash-alt"></i></a>
-                                                            <div class="modal animated zoomIn" id="deleteMdl{{$sale->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-lg" role="document">
-                                                                <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                 <h5 class="modal-title text-inspina text-primary text-center" id="exampleModalLabel">Realmente desea borrar la venta:<span class="borrado"> {{$sale->id}} de {{ $sale->customer->nombre }}</span></h5>
-                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                   <span aria-hidden="true">&times;</span>
-                                                                 </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                 <form action="{{route('sales.destroy', $sale->id)}}" role="form" method="POST" id="createProductFrm">
-                                                                @csrf @method('DELETE')
-                                                                <div class="modal-footer">
-                                                                   <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancelar</button>
-                                                                   <button type="submit" href="#" class="btn btn-primary">Borrar venta</button>
-                                                                 </div>
-                                                                </div>
-                                                                </div>
-                                                                </div>
-                    
-                                                                </form>
-                                                                </div>
-                                                    </td>
+                                                    
                                                 </tr>
                                             @endforeach
                                         </tbody>

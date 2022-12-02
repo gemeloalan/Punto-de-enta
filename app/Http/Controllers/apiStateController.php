@@ -5,50 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Municipality;
 use App\Models\State;
 use Illuminate\Http\Request;
-
-/**
- * Class StateController
- * @package App\Http\Controllers
- */
 class apiStateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
     return State::all(); 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $state = new State();
-        
-        return view('state.create', compact('state'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+ =/=
     public function store(Request $request)
     {
-        request()->validate(State::$rules);
+       $request->validate([
+            'nombre' => ['required', 'min:3', 'unique:states,nombre'],
+        ]);
 
         $state = State::create($request->all());
-        alert()->success('Estado Correctamente Agregado', 'Gracias ');
-
-        return redirect()->route('states.index')
-            ->with('success', 'Estado Agregado Correctamente.');
+        
+        return $state;
+        // return response()->json('Registro exitoso',200);
     }
 
 
@@ -59,32 +33,25 @@ class apiStateController extends Controller
         return $states;
     }
 
-  
-    public function edit($id)
-    {
-        $state = State::find($id);
-
-        return view('state.edit', compact('state'));
-    }
-
     public function update(Request $request, State $state)
     {
-        request()->validate(State::$rule);
 
         $state->update($request->all());
-        alert()->success('Estado Correctamente Actualizado', 'Gracias ');
 
-        return redirect()->route('states.index')
-            ->with('success', 'Estado Actualizado Correctamente');
+        return $state;
     }
 
 
     public function destroy($id)
     {
-        $state = State::find($id)->delete();
-        alert()->success('Estado Correctamente Eliminado', 'Gracias ');
+        $state = State::find($id);
+        if(is_null($state) )
+{
 
-        return redirect()->route('states.index')
-            ->with('success', 'Estado Eliminado COrrectamente');
+return response()->json('No existe el registro',404);
+}
+        $state->delete();
+
+        return response()->noContent();
     }
 }

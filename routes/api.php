@@ -27,9 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 route::apiResource('categories', apiCategoryController::class);
 route::apiResource('brands', apiBrandController::class);
-route::apiResource('states', apiProductController::class);
-route::apiResource('municipalities', apiStateController::class);
-route::apiResource('products', apiMunicipalityController::class);
+route::apiResource('states', apiStateController::class);
+route::apiResource('municipalities', apiMunicipalityController::class);
+route::apiResource('products', apiProductController::class);
 route::apiResource('customers', apiCustomerController::class);
 /* route::apiResource('customers', apiCategoryController::class);
  */

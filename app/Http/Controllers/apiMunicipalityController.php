@@ -7,110 +7,49 @@ use App\Models\State;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\ToSweetAlert;
 
-/**
- * Class MunicipalityController
- * @package App\Http\Controllers
- */
 class apiMunicipalityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
      
     return Municipality::all();
 }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $municipality = new Municipality();
         $states = State::pluck('nombre', 'id');
         return view('municipality.create', compact('municipality', 'states'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        request()->validate(Municipality::$rules);
 
         $municipality = Municipality::create($request->all());
 
-alert()->success('Municipio Agregado Correctamente ', 'Gracias ');
 
-        return redirect()->route('municipalities.index')
-            ->with('success', 'Municipio Creado Correctamente');
+        return $municipality;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $municipalities = Municipality::find($id);
 
         return $municipalities;
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $municipality = Municipality::find($id);
-        $states = State::pluck('nombre', 'id');
-
-
-        return view('municipality.edit', compact('municipality', 'states'));
+   
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Municipality $municipality
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Municipality $municipality)
     {
-        request()->validate(Municipality::$rule);
 
         $municipality->update($request->all());
-        alert()->success('Municipio Actualizado Correctamente ', 'Gracias ');
 
-        return redirect()->route('municipalities.index')
-            ->with('success', 'Municipio Actualizado Correctamente');
+        return $municipality;
     }
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function destroy($id)
     {
         $municipality = Municipality::find($id)->delete();
-        alert()->success('Municipio Correctamente Eliminado', 'Gracias ');
-
-        return redirect()->route('municipalities.index')
-            ->with('success', 'Municipio Eliminado Correctamente');
+        return response()->noContent();
     }
 }

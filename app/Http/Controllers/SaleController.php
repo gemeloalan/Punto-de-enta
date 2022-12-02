@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Sale;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 
 /**
@@ -49,34 +50,59 @@ class SaleController extends Controller
         return view('sale.create', compact('sale', 'customers', 'products'));
     }
 
+    public function pdf()
+    {
+        $sales = Sale::paginate();
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
+        // return $pdf->stream();
+        $pdf = PDF::loadView('sale.pdf',['sales'=>$sales]);
+        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
+        // return $pdf->stream();
+        return $pdf->download('Reporte-Ventas.pdf');
+        // alert()->info('Comenzara la descarga del PDF', ' ');
+
+
+        // return view(' .pdf', compact('products'));
+           
+    }
+
 
     public function store(Request $request)
     { 
         $products = Product::select('nombre','precio', 'id', 'stock')->get() ;
       /*   dd($request->all()); */
     /*   $sale = Sale::create($request->all()); */
-    $can =  $request ->input('cantidad');
-    $koka = Product::find($products-> id = $request -> product_id);
-$panas = $koka-> stock;
-    $cholo = $koka-> precio;
+    $recibeCantidad =  $request ->input('cantidad');
+    $buscaProducto = Product::find($products-> id = $request -> product_id);
+$buscaStock = $buscaProducto-> stock;
+    $encuentraPrecio = $buscaProducto-> precio;
+    $customers = Customer::select('nombre', 'id')->get();
+    $products = Product::select('nombre','precio', 'id', 'stock')->get() ;
 
-    if ( $can > $panas ) {
-       alert()->info('Cantidad no disponible', 'Supero la cantidad en existencia.'); 
-      }elseif ($can == 0) {
+
+    if ( $recibeCantidad > $buscaStock ) {
+       alert()->info('Cantidad no disponible', 'Supero la cantidad en existencia.');
+       return view('sale.create',compact('customers', 'products'));
+
+      }elseif ($recibeCantidad == 0) {
         alert()->info('La cantidad no puede ser cero.', 'Escribe otro numero porfavor'); 
+        return view('sale.create', compact('customers', 'products'));
+
+
 
       }
-      elseif ($can <= $panas ) {
+      elseif ($recibeCantidad <= $buscaStock ) {
         
       
       Sale::create(array(
         'customer_id'=> $request ->input('customer_id'),
         'product_id'=> $request ->input('product_id'),
-        $koka = Product::find($products-> id = $request -> product_id),
-      $mana = $cholo * $can,
+        $buscaProducto = Product::find($products-> id = $request -> product_id),
+      $multiplicaPrecio = $encuentraPrecio * $recibeCantidad,
      
       
-'total' => $mana,
+'total' => $multiplicaPrecio,
         'cantidad'=> $request ->input('cantidad'),
     )); 
     $dato = Product::find($products-> id = $request -> product_id);
@@ -84,8 +110,8 @@ $panas = $koka-> stock;
     $dato -> nombre = $dato -> nombre;
     $dato -> descripcion = $dato -> descripcion;
     $dato -> precio = $dato -> precio;
-    $elkks =  $dato ->stock  - $request -> cantidad;
-    $dato ->stock =  $elkks;
+    $resta =  $dato ->stock  - $request -> cantidad;
+    $dato ->stock =  $resta;
     $dato ->total = $dato -> total;
     $dato ->category_id = $dato -> category_id;
     $dato ->brand_id = $dato -> brand_id;

@@ -15,8 +15,10 @@
 <style>
     
 </style>
-    
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -206,7 +208,7 @@
 
     <!-- Bootstrap core JavaScript-->
 
-    <script src={{asset('jquery/jquery.min.js')}}></script>
+    <script src={{('jquery/jquery.min.js')}}></script>
     <link rel="stylesheet" href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{asset ('css/main.css') }}">
 

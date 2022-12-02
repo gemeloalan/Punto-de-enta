@@ -39,14 +39,17 @@ class apiBrandController extends Controller
  
     public function store(Request $request)
     {
-        request()->validate(Brand::$rules);
+        // dd($request->all());
+        $brand = new Brand();
+     /*    $brand->nombre = $request->nombre;
+        $brand->category_id = $request->category_id;
+        $brand->save();
+ */
+        
         
         $brand = Brand::create($request->all());
-        alert()->success('Marca Correctamente Agregada', 'Gracias ');
+        return $brand;
         
-        return redirect()->route('brands.index')
-        ->with('success', 'Se agrego la marca ');
-        dd($request->all());
     }
 
   
@@ -57,50 +60,19 @@ class apiBrandController extends Controller
         return $brands;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $brand = Brand::find($id);
-        $categories = Category::pluck('name', 'id');
+   
 
-
-        return view('brand.edit', compact('brand', 'categories'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Brand $brand
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Brand $brand)
     {
-        request()->validate(Brand::$rule);
 
         $brand->update($request->all());
-        alert()->success('Marca Correctamente Actualizada', 'Gracias ');
 
-        return redirect()->route('brands.index')
-            ->with('success', 'Marca Actualizada correctamente');
+        return $brand;
     }
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function destroy($id)
     {
         $brand = Brand::find($id)->delete();
-        alert()->success('Marca Correctamente Eliminada', 'Gracias ');
 
-        return redirect()->route('brands.index')
-            ->with('success', 'Marca eliminada');
+        return response()->noContent();
     }
 }

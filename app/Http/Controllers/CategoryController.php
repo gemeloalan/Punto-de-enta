@@ -11,8 +11,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate();
+        $products = Category::select('name','id')
+        ->orderBy('id', 'asc')
+        ->get() ;
 
-        return view('category.index', compact('categories'))
+
+        return view('category.index', compact('categories', 'products'))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
     }
 

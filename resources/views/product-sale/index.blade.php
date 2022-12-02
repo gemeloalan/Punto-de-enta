@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('template_title')
-    Detalle de Ventas
+    Sale
 @endsection
 
 @section('content')
@@ -14,21 +14,13 @@
                             <div class="card-header">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <span id="card_title">
-                                        {{ __('Detalle de Ventas
-                                        ') }}
+                                        {{ __('Ventas') }}
                                     </span>
-                                     {{-- <div class="float-right">
-                                        <a href="{{ route('product-sale.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                          {{ __('Agr') }}
+                                     <div class="float-right">
+                                        <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                          {{ __('Realizar una venta') }}
                                         </a>
-                                      </div> --}}
-                                      <div class="float-right">
-                                        <a href="{{ route('product-sales.pdf') }}" class="btn btn-primary btn-sm float-right"
-                                        data-placement="left">
-                                        <i class="far fa-solid fa-file-pdf"></i>
-                                    </a>
                                       </div>
-                                      
                                 </div>
                             </div>
                             @if ($message = Session::get('success'))
@@ -42,36 +34,49 @@
                                         <thead class="thead">
                                             <tr>
                                                 
-                                                
-                                                    <th class="text-center">No</th>
-                                                    <th class="text-center">Id-venta</th>
-                                                    <th class="text-center">Producto</th>
+                                                    <th class="text-center">Id-Venta</th>
+                                                    <th class="text-center">Clientes</th>
+                                                    <th class="text-center">Productos</th>
                                                     <th class="text-center">Cantidad</th>
-                                                    <th class="text-center">Precio</th>
-                                                    <th class="text-center">Descuento</th>
+                                                    <th class="text-center">Fecha</th>
                                                     <th class="text-center">Total</th>
-                                                    <th>Ver</th>
+                                                    <th class="text-center">Ver</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($productSales as $productSale)
+                                            @foreach ($sales as $sale)
                                                 <tr>
+                                                   
                                                     
-                                                        <td class="text-center">{{ ++$i }}</td>
-                                                        <td class="text-center">{{ $productSale->sale_id }}</td>
-                                                        <td class="text-center">{{ $productSale->product->nombre }}</td>
-                                                        <td class="text-center">{{ $productSale->cantidad }}pzs.</td>
-                                                        <td class="text-center">${{ $productSale->precio }}</td>
-                                                        <td class="text-center">{{ $productSale->descuento }}%</td>
+                                                        <td class="text-center">{{ /* ++$isa */ $sale->id }}</td>
+
                                                         <td class="text-center">
-                                                            <a class="btn " href="{{ route('product-sale.show',$productSale->id) }}"><i class="far fa-eye"></i> </a>
-                                                            {{-- <form action="{{ route('product-sale.destroy',$productSale->id) }}" method="POST">
-                                                            <a class="btn " href="{{ route('product-sale.edit',$productSale->id) }}"><i class="far fa-edit"></i> </a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn "><i class="far fa-trash-alt"></i> </button>
-                                                        </form> --}}
-                                                    </td>
+                                                            @isset( $sale->customer->nombre )
+                                                            {{ $sale->customer->nombre }}
+                                                            @else
+                                                            <p class="ala">Cliente inactivo</p>
+                                                            @endisset
+                                                        </td>
+                                                        <td class="text-center">
+                                                            @isset( $sale->product->nombre )
+                                                            {{ $sale->product->nombre }}
+                                                            @else
+                                                            <p class="ala">Producto inactivo</p>
+                                                                
+                                                            @endisset</td>
+                                                        
+                                                            <td class="text-center">   {{ $sale->cantidad }}</td>
+                                                        <td class="text-center">{{ $sale->created_at }}</td>
+<?php 
+//$total  = $sale->product->precio * $sale->cantidad
+
+?>
+                                                        <td class="text-center">{{ $sale->total   }}</td>
+                                                        <td class="text-center">
+                                                        <a class="btn btn-circle" href="{{ route('sales.show' , $sale->id) }}">
+                                                        <i class="far fa-eye"></i></a>    
+                                                        </td>
+                                                    
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -79,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-                        {!! $productSales->links() !!}
+                        {!! $sales->links() !!}
                     </div>
                 </div>
             </div>

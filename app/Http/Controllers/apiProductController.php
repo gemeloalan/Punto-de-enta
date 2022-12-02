@@ -11,10 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-/**
- * Class ProductController
- * @package App\Http\Controllers
- */
 class apiProductController extends Controller
 {
  
@@ -61,10 +57,8 @@ class apiProductController extends Controller
         request()->validate(Product::$rules);
 
         $product = Product::create($request->all());
-        alert()->success('Producto Correctamente Agregado', 'Gracias ');
 
-        return redirect()->route('products.index')
-            ->with('success', 'Producto Agregado Correctamente.');
+        return $product;
     }
 
   
@@ -81,19 +75,16 @@ class apiProductController extends Controller
         $product = Product::find($id);
         $categories = Category::pluck('name', 'id');
         $brands = Brand::pluck('nombre', 'id');
-        return view('product.edit', compact('product', 'categories', 'brands'));
+ 
     }
 
    
     public function update(Request $request, Product $product)
     {
-        request()->validate(Product::$rule);
 
         $product->update($request->all());
-        alert()->success('Producto Correctamente Actualizado', 'Gracias ');
 
-        return redirect()->route('products.index')
-            ->with('success', 'Producto Actualizado Correctamente');
+        return $product;
     }
 
     
@@ -103,10 +94,7 @@ class apiProductController extends Controller
         $categories = Category::pluck('name', 'id');
         $brands = Brand::pluck('nombre', 'id');
         $product = Product::find($id)->delete();
-        alert()->success('Producto Correctamente Eliminado', 'Gracias ');
-
-        return redirect()->route('products.index', compact('brands', 'categories'))
-            ->with('success', 'Producto Eliminado Correctamente');
+        return response()->noContent();
     }
  
 }

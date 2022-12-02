@@ -30,7 +30,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products/pdf', [App\Http\Controllers\ProductController::class, 'pdf'])->name('products.pdf');
 Route::get('/customers/pdf', [App\Http\Controllers\CustomerController::class, 'pdf'])->name('customers.pdf');
-Route::get('/product-sale/pdf', [App\Http\Controllers\ProductSaleController::class, 'pdf'])->name('product-sales.pdf');
+Route::get('/sales/pdf', [App\Http\Controllers\ProductSaleController::class, 'pdf'])->name('sale.pdf');
 
 /* Creating the following routes: */
 Route::resource('municipalities', MunicipalityController::class)->middleware('auth');
