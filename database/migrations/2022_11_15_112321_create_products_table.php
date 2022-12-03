@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->nullable();
             $table->string('descripcion');
+            $table->string('image');
             $table->decimal("precio", 9, 2);
             $table->bigInteger('stock');
             $table->bigInteger('total');

@@ -30,8 +30,8 @@ class CustomerController extends Controller
         $customers = Customer::paginate();
 
         $pdf = PDF::loadView('customer.pdf',['customers'=>$customers]);
-        // return $pdf->stream();
-        return $pdf->download('reporte-Clientes.pdf');
+        //return $pdf->stream();
+         return $pdf->download('reporte-Clientes.pdf');
 
 
     }
@@ -48,8 +48,26 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         request()->validate(Customer::$rules);
+        $request->validate([
+            'image' => ['required','mimes:jpg,jpeg,bmp,png', 'max:2040'],
+        ]);
+        $file = $request->file('image');   
 
-        $customer = Customer::create($request->all());
+        //obtenemos el nombre del archivo
+        $nombre =  time()."_".$file->getClientOriginalName();
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+       $request->image->move(public_path('customer'),$nombre);
+
+       
+
+
+       $archivo = new Customer();
+       $archivo->image = $nombre;
+       $archivo->nombre = $request->nombre;
+       $archivo->correo = $request->correo;
+       $archivo->telefono = $request->telefono;
+       $archivo->direccion = $request->direccion;
+$archivo->save();
         alert()->success('Cliente Correctamente Agregada', 'Gracias ');
 
 

@@ -1,13 +1,24 @@
-@extends('layouts.principal')
+@extends('layouts.app')
 
 @section('content')
-<div class="container">
+<style>
+   footer{
+    position: fixed;
+    bottom: 0;
+width: 100%  ;
+   }
+
+</style>
+
+<div class="fondoPantalla">
+    
+<div class="container ">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div class="card-body ">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -56,7 +67,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Inicia Sesion') }}
                                 </button>
-                              <a href="{{ route('register') }}" class="btn btn-primary">Registrate</a>
+                              <a href="{{ route('register') }}" class="btn btn-primary ">Registrate</a>
 
                            {{--      @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -70,5 +81,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

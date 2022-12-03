@@ -1,0 +1,67 @@
+.arrastra{
+    border: 5px dashed #ddd;
+    height: 300px;
+    width: 1140px;
+    border-radius: 10px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.arrastra.active{
+    background-color: aquamarine;
+    color: black;
+    border: 2px dashed blanchedalmond;
+}
+.arrastra h2{
+    font-size: 30px;
+    color: black;
+    font-weight: 500;
+}
+.arrastra span{
+    font-size: 25px;
+    color: #000;
+}
+.arrastra button{
+    padding: 10px 25px;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin: 25px;
+}
+.fileConrtainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: solid 1px #ddd;
+
+}
+
+#preview{
+    margin-top: 10px;
+}
+.status-text{
+    padding: 0 10px;
+
+}
+.succes{
+    color: green;
+}
+.failure{
+    color: red;
+}

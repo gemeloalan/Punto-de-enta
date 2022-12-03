@@ -5,14 +5,15 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
+    <section class="content badge-dark">
+        <div class="row badge-info">
+            <br>
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
-                    <div class="card-header">
+                    <div class="card-header ">
                         <span class="card-title">Nueva Venta</span>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('sales.create') }}"> Cancelar Venta</a>

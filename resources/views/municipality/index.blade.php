@@ -94,6 +94,7 @@
                             </div>
                         </div>
                         {!! $municipalities->links() !!}
+                        
                     </div>
                 </div>
             </div>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSaleRequest;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Sale;
-use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 /**
  * Class SaleController
@@ -50,25 +52,20 @@ class SaleController extends Controller
         return view('sale.create', compact('sale', 'customers', 'products'));
     }
 
-    public function pdf()
+
+    public function ver()
     {
         $sales = Sale::paginate();
-        // $pdf = App::make('dompdf.wrapper');
-        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
-        // return $pdf->stream();
-        $pdf = PDF::loadView('sale.pdf',['sales'=>$sales]);
-        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
-        // return $pdf->stream();
-        return $pdf->download('Reporte-Ventas.pdf');
-        // alert()->info('Comenzara la descarga del PDF', ' ');
+        $customers = Customer::select('nombre', 'id')->get();
+      
+        $products = Product::select('nombre','precio', 'id', 'stock')->get() ;
 
-
-        // return view(' .pdf', compact('products'));
+      return view('sale.ver',compact('sales', 'customers', 'products'));
            
     }
 
 
-    public function store(Request $request)
+    public function store(StoreSaleRequest $request)
     { 
         $products = Product::select('nombre','precio', 'id', 'stock')->get() ;
       /*   dd($request->all()); */
@@ -123,34 +120,44 @@ $buscaStock = $buscaProducto-> stock;
     return redirect()->route('sales.index')
     ->with('success', 'Venta Existosa.');
 }
-     
-      
-       /*  Sale::create(array(
-            'customer_id'=> $request ->input('customer_id'),
-            'product_id'=> $request ->input('product_id'),
-            'cantidad'=> $request ->input('cantidad'),
-        ));  */
-        /* $productoActualizado = Producto::find($producto->id);
-        $productoActualizado->existencia -= $productoVendido->cantidad;
-        $productoActualizado->saveOrFail(); */
-       
-       /*  $salesa = Sale::select('cantidad', 'product_id')->get() ;
 
-        $productoActualizado = Product::find($products->id);
-        $productoActualizado->stock -= $salesa->cantidad;
-        $productoActualizado->saveOrFail(); */
-     
 
         return redirect()->route('sales.index');
            
     }
+    public function pdf()
+    {
+        $sales = Sale::paginate();
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
+        // return $pdf->stream();
+        $pdf = PDF::loadView('sale.detalle',['sales'=>$sales]);
+        // $pdf->loadHTML('<h1>Hola Mundo</h1>');
+        // return $pdf->download('Reporte-Ventas.pdf');
+        // alert()->info('Comenzara la descarga del PDF', ' ');
 
+
+        return $pdf->download('reporte-Ventas.pdf');
+        // return view(' .pdf', compact('products'));
+           
+    }
    
     public function show($id)
     {
         $sale = Sale::find($id);
 
         return view('sale.show', compact('sale'));
+    }
+    public function mirar($id)
+    {
+        $sale = Sale::find($id);
+        $customers = Customer::select('nombre', 'id')->get();
+        // dd($customers->all());
+        // $products = Product::all();
+        $products = Product::select('nombre','precio', 'id', 'stock')->get() ;
+
+
+        return view('sale.mirar', compact('sale','customers','products'));
     }
 
 

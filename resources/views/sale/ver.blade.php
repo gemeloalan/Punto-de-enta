@@ -14,16 +14,14 @@
                             <div class="card-header">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <span id="card_title">
-                                        {{ __('Ventas') }}
+                                        {{ __('Detalle de Ventas') }}
                                     </span>
                                      <div class="float-right">
-                                        <div class="float-right">
-                                            <a href="{{ route('sales.pdf') }}" class="btn btn-primary btn-sm float-right"
+                                            <a href="{{ route('sale.pdf') }}" class="btn btn-primary btn-sm float-right"
                                             data-placement="left">
                                             <i class="far fa-solid fa-file-pdf"></i>
                                         </a>
                                           </div>
-                                      </div>
                                 </div>
                             </div>
                             @if ($message = Session::get('success'))
@@ -76,7 +74,7 @@
 ?>
                                                         <td class="text-center">{{ $sale->total   }}</td>
                                                         <td class="text-center">
-                                                        <a class="btn btn-circle" href="{{ route('sales.show' , $sale->id) }}">
+                                                        <a class="btn btn-circle" href="{{ route('sale.mirar' , $sale->id) }}">
                                                         <i class="far fa-eye"></i></a>    
                                                         </td>
                                                     
@@ -94,3 +92,4 @@
         </div>
     </div>
 @endsection
+

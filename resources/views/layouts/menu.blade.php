@@ -22,7 +22,7 @@
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                    {{ __('Salir weon') }}  <i class="far fa-arrow-alt-circle-right">  </i>
+                    {{ __('Salir') }}  <i class="far fa-arrow-alt-circle-right">  </i>
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

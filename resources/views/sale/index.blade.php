@@ -81,15 +81,20 @@
 ?>
                                                         <td class="text-center">   {{ $sale->cantidad }}</td>
                                                         <td class="text-center">{{ $sale->total   }}</td>
-                                                    <td>
+                                                    <td class="text-center col-1">
                                                             <a class="btn " href="{{ route('sales.show',$sale->id) }}"><i class="far fa-eye"></i> </a>
-                                                            <a class="btn" href="{{ route('sales.edit',$sale->id) }}"><i class="far fa-edit"></i> </a>
                                                             <a class="btn" data-toggle="modal" data-target="#deleteMdl{{ $sale->id }}" "><i class="far fa-trash-alt"></i></a>
                                                             <div class="modal animated zoomIn" id="deleteMdl{{$sale->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg" role="document">
                                                                 <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                 <h5 class="modal-title text-inspina text-primary text-center" id="exampleModalLabel">Realmente desea borrar la venta:<span class="borrado"> {{$sale->id}} de {{ $sale->customer->nombre }}</span></h5>
+                                                                 <h5 class="modal-title text-inspina text-primary text-center" id="exampleModalLabel">Realmente desea borrar la venta:<span class="borrado"> {{$sale->id}} de 
+                                                                    @isset( $sale->customer->nombre )
+                                                            {{ $sale->customer->nombre }}
+                                                            @else
+                                                            <p class="ala">Cliente inactivo</p>
+                                                            @endisset</span></h5>
+
                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                    <span aria-hidden="true">&times;</span>
                                                                  </button>

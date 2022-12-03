@@ -40,6 +40,7 @@
             
                                                 <th class="text-center">No</th>
                                                     <th class="text-center">Nombre</th>
+                                                    <th class="text-center">Imagen</th>
                                                     <th class="text-center">Correo</th>
                                                     <th class="text-center">Telefono</th>
                                                     <th class="text-center">Direccion</th>
@@ -54,6 +55,8 @@
             
                                                     <td class="text-center">{{ ++$i }}</td>
                                                         <td class="text-center">{{ $customer->nombre }}</td>
+                                                        <td class="text-center"><img class="perfil" src="{{ asset('customer/'.$customer->image) }}"  width="80px" alt="Imagen no disponible"></td>
+
                                                         <td class="text-center">{{ $customer->correo }}</td>
                                                         <td class="text-center">{{ $customer->telefono }}</td>
                                                         <td class="text-center">{{ $customer->direccion }}</td>
@@ -76,10 +79,10 @@
                                                         
                                                         </td>
                                                         {{-- <td class="text-center">{{ $customer->municipality_id}}</td> --}}
-                                                    <td class="text-center col-sm-3">
+                                                    <td class="text-center ">
                                                             <a class="btn  " href="{{ route('customers.show',$customer->id) }}"><i class="far fa-eye"></i> </a>
                                                             <a class="btn " href="{{ route('customers.edit',$customer->id) }}"><i class="far fa-edit"></i> </a>
-                                                           <a  class="btn" data-toggle="modal" data-target="#deleteMdl{{ $customer->id }}" >Eliminado
+                                                           <a  class="btn" data-toggle="modal" data-target="#deleteMdl{{ $customer->id }}" >
                                                              <i class="far fa-trash-alt ">
                                                                 </i></a>
                                                     </td>

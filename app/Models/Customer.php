@@ -32,7 +32,7 @@ class Customer extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','correo','telefono','direccion','state_id', 'municipality_id'];
+    protected $fillable = ['nombre','correo','telefono','direccion','state_id', 'municipality_id', 'image'];
 
 
     /**

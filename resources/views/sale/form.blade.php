@@ -13,8 +13,11 @@
                     @foreach ($customers as $customer)
                     <option value="{{$customer->id}}" placeholder="Selecciona un Cliente">{{$customer->nombre}}</option>
                     @endforeach
-
-                    </select>
+                </select>
+                @if ($errors->has('customer_id'))
+                
+                <span class="text-danger">{{$errors->first('customer_id')}}</span>
+                @endif
         
                     </div>
 
@@ -29,13 +32,21 @@
                     
                         @endforeach
                     </select>
+                    @if ($errors->has('product_id'))
+                
+                <span class="text-danger">{{$errors->first('product_id')}}</span>
+                @endif
                         </div>
                     
                     
                         <div class="col-lg-6 form-group">
                           <label for="cantidad">Cantidad</label>
                           <input type="number"
-                            class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId" placeholder="Escribe la cantidad de productos que deseas vender">
+                            class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId" placeholder="Escribe la cantidad de productos que deseas vender" value="{{old('cantidad')}}">
+                            @if ($errors->has('cantidad'))
+                
+                <span class="text-danger">{{$errors->first('cantidad')}}</span>
+                @endif
                         </div>
                 </div>
               

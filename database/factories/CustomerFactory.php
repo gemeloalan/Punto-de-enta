@@ -23,6 +23,8 @@ class CustomerFactory extends Factory
             'correo' =>$this->faker->companyEmail(), 
             'telefono' =>$this->faker->e164PhoneNumber(),
             'direccion' =>$this->faker->address(),
+            'image' => $this->faker->imageUrl(),
+
             'state_id'=>State::inRandomOrder()->first()->id,
             'municipality_id'=>Municipality::inRandomOrder()->first()->id,
 

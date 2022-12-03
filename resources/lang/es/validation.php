@@ -149,6 +149,13 @@ return [
     'attributes' => [
         'correo'=> 'correo electronico',
         'telefono'=> 'numero telefonico',
+        'telefono'=> 'numero telefonico',
+        'brand_id'=> 'marca',
+        'category_id'=> 'categoria',
+        'customer_id'=> 'cliente',
+        'state_id'=> 'estado',
+        'product_id'=> 'producto',
+        'image'=> 'imagen',
 
         // Aqui voy a agregarlos los que necesito sus traducciones
     ],

@@ -1,98 +1,84 @@
-@extends('layouts.principal')
+<link href="{{ public_path('css/sb-admin-2.min.css') }}" rel="stylesheet" type="text">
+<style>
+    .uno{
+       text-align: center;
+       color: black;
+   } 
+   .card{
 
-@section('template_title')
-    Sale
-@endsection
+   }
+   footer {
+           position: fixed;
+           bottom: 0cm;
+           left: 0cm;
+           right: 0cm;
+           height: 2cm;
+           background-color: #2a0927;
+           color: white;
+           text-align: center;
+           line-height: 35px;
+       }
+</style>
+<h1 class="uno">Detalle de ventas</h1>
+<table class="table table-striped table-bordered table-hover dts">
+    <thead class="thead">
+        <tr>
+            
+            
+                <th class="text-center">Id-venta</th>
+                <th class="text-center">Producto</th>
+                <th class="text-center">Cantidad</th>
+                <th class="text-center">Precio</th>
+                <th class="text-center">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($sales as $sale)
+            <tr>
+                
+                    <td class="text-center">{{ $sale->id }}</td>
 
-@section('content')
-    <div class="card">
-        <div class="card-body">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span id="card_title">
-                                        {{ __('Ventas') }}
-                                    </span>
-                                     <div class="float-right">
-                                        <a href="{{ route('sales.pdf') }}" class="btn btn-primary btn-sm float-right"
-                                        data-placement="left">
-                                        <i class="far fa-solid fa-file-pdf"></i>
-                                    </a>
-                                      </div>
-                                </div>
-                            </div>
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div>
-                            @endif
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover dts">
-                                        <thead class="thead">
-                                            <tr>
-                                                
-                                                    <th class="text-center">No</th>
-                                                    <th class="text-center">Clientes</th>
-                                                    <th class="text-center">Productos</th>
-                                                    <th class="text-center">Precio</th>
-                                                    <th class="text-center">Fecha</th>
-                                                    <th class="text-center">Cantidad</th>
-                                                    <th class="text-center">Total</th>
-                                                    <th class="text-center">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($sales as $sale)
-                                                <tr>
-                                                   
-                                                    
-                                                        <td class="text-center">{{ /* ++$isa */ $sale->id }}</td>
-
-                                                        <td class="text-center">
-                                                            @isset( $sale->customer->nombre )
-                                                            {{ $sale->customer->nombre }}
-                                                            @else
-                                                            <p class="ala">Cliente inactivo</p>
-                                                            @endisset
-                                                        </td>
-                                                        <td class="text-center">
-                                                            @isset( $sale->product->nombre )
-                                                            {{ $sale->product->nombre }}
-                                                            @else
-                                                            <p class="ala">Producto inactivo</p>
-                                                                
-                                                            @endisset</td>
-                                                        <td class="text-center">
-                                                            @isset( $sale->product->precio )
-                                                            {{ $sale->product->precio }}
-                                                            @else
-                                                            <p class="ala">Precio inactivo</p>
-                                                                
-                                                            @endisset
-                                                        </td>
-                                                        <td class="text-center">{{ $sale->created_at }}</td>
-<?php 
-//$total  = $sale->product->precio * $sale->cantidad
-
-?>
-                                                        <td class="text-center">   {{ $sale->cantidad }}</td>
-                                                        <td class="text-center">{{ $sale->total   }}</td>
-                                                    
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        {!! $sales->links() !!}
-                    </div>
-                </div>
-            </div>
+                    <td class="text-center">
+                        @isset( $sale->product->nombre )
+                        {{ $sale->product->nombre }}
+                        @else
+                        <p class="ala">No hay registro de Producto</p>
+                            
+                        @endisset
+                    </td>
+                    <td class="text-center">{{ $sale->cantidad }}</td>
+                    <td class="text-center">
+                        @isset( $sale->product->precio )
+                        {{ $sale->product->precio }}
+                        @else
+                        <p class="ala">No hay registro de Producto</p>
+                            
+                        @endisset
+                     </td>
+                    <td class="text-center">{{ $sale->total }}</td>
+                    
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+<footer>
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span class="maquina ">Copyright &copy; Alan Manuel 2022</span>
+            <br>
+            www.gemeloalan.online
         </div>
     </div>
-@endsection
+
+</footer>
+  
+        <script type="text/php">
+    if ( isset($pdf) ) {
+        $pdf->page_script('
+            $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
+            $pdf->text(270, 730, "Pagina $PAGE_NUM de $PAGE_COUNT", $font, 10);
+        ');
+    }
+       
+</script>
+  

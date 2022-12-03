@@ -29,7 +29,7 @@ Productos
                                         <i class="far fa-solid fa-file-pdf"></i>
                                     </a>
 
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -46,6 +46,7 @@ Productos
 
                                             <th class="text-center">No</th>
                                             <th class="text-center">Nombre</th>
+                                            <th class="text-center">Imagen</th>
                                             <th class="text-center">Descripcion</th>
                                             <th class="text-center">Precio</th>
                                             <th class="text-center">Stock</th>
@@ -59,28 +60,40 @@ Productos
                                         @foreach ($products as $product )
                                         <tr>
 
-                                            
+
                                             <td class="text-center">{{ ++$i }}</td>
                                             <td class="text-center">{{ $product->nombre }}</td>
+                                            {{-- <td class="text-center"><img class="perfil" src="{{ $product->image }}"  width="80px" alt=""></td> --}}
+                                            <td class="text-center">
+                                                <div class="zoom">
+                                                    
+                                                <img class="perfil" src="{{ asset('image/' .$product->image) }}"  width="80px" alt="La imagen no esta disponible">
+                                                
+                                                
+                                            </div>
+                                        </td>
                                             <td class="text-center">{{ $product->descripcion }}</td>
-                                            <td class="text-center">{{ $product->precio }}</td>
-                                            <td class="text-center">{{ $product->stock }}</td>
-                                            <td class="text-center">{{ $product->total }}</td>
+                                            <td class="text-center">${{ $product->precio }}
+                                                <br>
+                                                 c/u
+                                                </td>
+                                            <td class="text-center">{{ $product->stock }}pzs.</td>
+                                            <td class="text-center">${{ $product->total }}.</td>
                                             <td class="text-center">
                                                 @isset($product->category->name)
-                                                    
+
                                                 {{ $product->category->name }}
                                                 @else <p class="ala">NO hay registro</p>
                                                 @endisset
-                                            
+
                                             </td>
-                                            <td class="text-center ">
+                                            <td class="text-center">
                                                 @isset($product->brand->nombre)
 
                                                 {{ $product->brand->nombre }}
-                                                    @else <p class="ala">No hay registro</p>
+                                                @else <p class="ala">No hay registro</p>
                                                 @endisset
-                                            
+
                                             </td>
                                             <td>
                                                 <a class="btn " href="{{ route('products.show',$product->id) }}"><i
@@ -103,7 +116,8 @@ Productos
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title text-inspina text-primary text-center"
                                                                     id="exampleModalLabel">Realmente desea borrar el
-                                                                    producto <span class="borrado">{{$product->nombre}}</span></h5>
+                                                                    producto <span
+                                                                        class="borrado">{{$product->nombre}}</span></h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>

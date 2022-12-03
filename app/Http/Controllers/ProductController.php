@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 // use PDF;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Adapter\PDFLib;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class ProductController
@@ -28,17 +30,23 @@ class ProductController extends Controller
     }
     public function pdf()
     {
+        
         $products = Product::paginate();
+        // $pdf = PDF::loadView('emails/templates/invoice-pdf', $products);
         // $pdf = App::make('dompdf.wrapper');
         // $pdf->loadHTML('<h1>Hola Mundo</h1>');
         // return $pdf->stream();
-        $pdf = PDF::loadView('product.pdf',['products'=>$products]);
+        /* Loading the view and then downloading it. */
+        // $pdf = PDF::loadView('product.pdf',['products'=>$products]);
+        // return $pdf->download('Reporte-Productos.pdf');
         // $pdf->loadHTML('<h1>Hola Mundo</h1>');
         // return $pdf->stream();
-        return $pdf->download('Reporte-Productos.pdf');
         // alert()->info('Comenzara la descarga del PDF', ' ');
 
 
+        $pdf = PDF::loadView('product.pdf', ['products'=>$products]);
+
+        return $pdf->download('reporte-Productos.pdf');
         // return view(' .pdf', compact('products'));
            
     }
@@ -61,9 +69,27 @@ class ProductController extends Controller
    
     public function store(Request $request)
     {
+        
         request()->validate(Product::$rules);
+        $file = $request->file('image');   
 
-        $product = Product::create($request->all());
+        $nombre =  time()."_".$file->getClientOriginalName();
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+       $request->image->move(public_path('image'),$nombre);
+
+       
+        
+        $archivo = new Product();
+        $archivo->image = $nombre;
+       $archivo->nombre = $request->nombre;
+       $archivo->descripcion = $request->descripcion;
+       $archivo->precio = $request->precio;
+       $archivo->stock = $request->stock;
+       $archivo->total = $request->total;
+       $archivo->category_id = $request->category_id;
+       $archivo->brand_id = $request->brand_id;
+$archivo->save();
+        
         alert()->success('Producto Correctamente Agregado', 'Gracias ');
 
         return redirect()->route('products.index')

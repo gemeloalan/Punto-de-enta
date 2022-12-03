@@ -1,3 +1,5 @@
+
+
 // Para que el datatables funcione correctamente y a su vez con el idioma en espanol
 $(document).ready(function(){
     $('.dts').DataTable({
@@ -18,6 +20,9 @@ $(document).ready(function(){
     }, 2000);
     
 
+    // El input de dropArea imagen empieza aqui
+
+   
 
 
     

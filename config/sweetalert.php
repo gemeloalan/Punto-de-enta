@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'alwaysLoadJS' => env('SWEET_ALERT_ALWAYS_LOAD_JS', false),
+    'alwaysLoadJS' => env('SWEET_ALERT_ALWAYS_LOAD_JS', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'timer' => env('SWEET_ALERT_TIMER', 5000),
+    'timer' => env('SWEET_ALERT_TIMER', 2000),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,8 @@ return [
     | for particular modal just use the width() helper method.
     */
 
-    'width' => env('SWEET_ALERT_WIDTH', '32rem'),
+    /* Setting the width of the modal. */
+    'width' => env('SWEET_ALERT_WIDTH', '30rem'),
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +96,7 @@ return [
     | for particular modal just use the padding() helper method.
     */
 
-    'padding' => env('SWEET_ALERT_PADDING', '1.25rem'),
+    'padding' => env('SWEET_ALERT_PADDING', '2rem'),
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +109,7 @@ return [
     */
 
     'animation' => [
-        'enable' => env('SWEET_ALERT_ANIMATION_ENABLE', false),
+        'enable' => env('SWEET_ALERT_ANIMATION_ENABLE', true),
     ],
 
     'animatecss' => env('SWEET_ALERT_ANIMATECSS', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'),
@@ -137,7 +138,7 @@ return [
     |
     */
 
-    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', false),
+    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -161,7 +162,7 @@ return [
     |
     */
 
-    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', false),
+    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', true),
 
     /*
     |--------------------------------------------------------------------------

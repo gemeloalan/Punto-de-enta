@@ -44,8 +44,9 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     {{-- <i class="fas fa-layers"></i> --}}
-                    <i class="fas fa-laugh-wink"></i>
-                               </div>
+                    {{-- <i class="fas fa-laugh-wink"></i> --}}
+                    <i class="far <i class="fas fa-bed"></i></i>
+                </div>
                 <div class="sidebar-brand-text mx-3">{{ config('app.name', 'Maracas') }}     </div>
             </a>
 
@@ -112,13 +113,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Mantenimiento-Ventas</span>
+                    <span>Ventas</span>
                 </a>
                 <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Selecciona:</h6>
                         <a class="collapse-item" href="{{ route('sales.index') }}">Ventas</a>
-                        <a class="collapse-item" href="{{ route('product-sale.index') }}">Detalle de Ventas</a>
+                        <a class="collapse-item" href="{{ route('sale.ver') }}">Detalle de Ventas</a>
+                        <a class="collapse-item" href="{{ route('images.index') }}">Imagenes</a>
                     </div>
                 </div>
             </li>
@@ -209,23 +211,21 @@
     <!-- Bootstrap core JavaScript-->
 
     <script src={{('jquery/jquery.min.js')}}></script>
+    
     <link rel="stylesheet" href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}">
+
     <link rel="stylesheet" href="{{asset ('css/main.css') }}">
 
-
     <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
+
     <script src="{{ asset('datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript-->
-{{--     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
- --}}
-
-    <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-    
+
     <script src="{{ asset('js/main.js') }}"></script>
+    
     <script src="{{ asset('js/ventas.js') }}"></script>
 
     <!-- Page level plugins -->

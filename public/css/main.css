@@ -1,3 +1,4 @@
+
 .ala{
     color: black;
     text-shadow: 1px 1px .5px rgba(255,0,0,1);
@@ -120,6 +121,7 @@ select:hover,input:hover{
     -webkit-animation: shake .5s;
     box-shadow: 1px 7px 10px 5px gray;
 }
+
 .invalid-feedback{
     font-weight: bold;
     animation: shake 3s infinite;
@@ -145,8 +147,21 @@ select:hover,input:hover{
 100%{
     transform: rotate(1deg);
    
+}}
+.text-danger{
+    font-weight: bold;
+    animation: shake 3s infinite;
+    
+    transition: animation 1.5s ease;
+    -webkit-animation: shake 3s infinite;
+    -webkit-transition: animation 1.5s ease;
+    -moz-transition: animation 1.5s ease;
+    -ms-transition: animation 1.5s ease;
+    -o-transition: animation 1.5s ease;
+    min-width: none;
 }
-}
+
+
 
 .salir-login:hover{
     font-size: 15px;
@@ -233,7 +248,109 @@ btn-primary{background-color: yellowgreen;}
       -ms-transform: rotate(1800deg);
       -o-transform: rotate(1800deg);
 }
+
+
   }
   
 
+
+ .perfil{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.arrastra{
+    border: 5px dashed #ddd;
+    height: 300px;
+    width: 1140px;
+    border-radius: 10px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.arrastra.active{
+    background-color: aquamarine;
+    color: black;
+    border: 2px dashed blanchedalmond;
+}
+.arrastra h2{
+    font-size: 30px;
+    color: black;
+    font-weight: 500;
+}
+.arrastra span{
+    font-size: 25px;
+    color: #000;
+}
+.arrastra button{
+    padding: 10px 25px;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin: 25px;
+}
+.fileConrtainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: solid 1px #ddd;
+
+}
+
+#preview{
+    margin-top: 10px;
+}
+.status-text{
+    padding: 0 10px;
+
+}
+.succes{
+    color: green;
+}
+.failure{
+    color: red;
+}
+
+.perfil {
+    transition: transform .2s; /* Animation */
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+
+  }
+  
+  .perfil:hover {
+    /*Scalingtheimageto3timesitsoriginalsize.*/transform: scale(3);
+    /*(150%zoom-Note: if the zoom is too large, it will go outside of the viewport) */  ;
+    -webkit-transform: scale(3);
+    position: relative;
+    -moz-transform: scale(3);
+    -ms-transform: scale(3);
+    -o-transform: scale(3);
+    box-shadow: 0px 5px 10px black;
+    
+}
+  .perfil:hover>alt {
+  
+    box-shadow: 0px 5px 10px black;
  
+}
+

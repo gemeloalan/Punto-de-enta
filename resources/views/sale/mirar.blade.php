@@ -14,7 +14,7 @@
                             <span class="card-title float-end">Detalle de la venta</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('sales.index') }}"> Regresar</a>
+                            <a class="btn btn-primary" href="{{ route('sale.ver') }}"> Regresar</a>
                         </div>
                     </div>
 
@@ -22,15 +22,27 @@
                         
                         <div class="form-group">
                             <strong>Cliente:</strong>
+                            @isset( $sale->customer->nombre )
                             {{ $sale->customer->nombre }}
+                            @else
+                            <p class="ala">Cliente inactivo</p>
+                            @endisset                        </div>
+                        <div class="form-group">
+                            <strong>Producto:</strong>
+                            @isset( $sale->product->nombre )
+                                                            {{ $sale->product->nombre }}
+                                                            @else
+                                                            <p class="ala">Producto inactivo</p>
+                                                            @endisset
                         </div>
                         <div class="form-group">
                             <strong>Producto:</strong>
-                            {{ $sale->product->nombre }} 
-                        </div>
-                        <div class="form-group">
-                            <strong>Producto:</strong>
-                             ${{ $sale->product->precio }}c/u
+                             @isset( $sale->product->precio )
+                            $ {{ $sale->product->precio }}c/u
+                             @else
+                             <p class="ala">Producto inactivo</p>
+                             @endisset
+                             
                         </div>
                         <div class="form-group">
                             <strong>Cantidad:</strong>

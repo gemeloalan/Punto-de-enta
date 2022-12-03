@@ -12,7 +12,7 @@ class apiStateController extends Controller
     return State::all(); 
     }
 
- =/=
+ 
     public function store(Request $request)
     {
        $request->validate([

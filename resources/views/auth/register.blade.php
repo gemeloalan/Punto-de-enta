@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -13,7 +13,6 @@
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -67,8 +66,11 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Crear cuenta') }}
                                 </button>
+                                <a style="padding-left: 10px" href="{{ route('login') }}" class="btn btn-primary col-md-6 float-right">Iniciar sesion</a>
                             </div>
+
                         </div>
+
                     </form>
                 </div>
             </div>

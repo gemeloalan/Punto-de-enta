@@ -1,11 +1,25 @@
 <link href="{{ public_path('css/sb-admin-2.min.css') }}" rel="stylesheet" type="text">
 <style>
     .uno{
-        text-align: center;
-        color: black;
-    }
+       text-align: center;
+       color: black;
+   } 
+   .card{
+
+   }
+   footer {
+           position: fixed;
+           bottom: 0cm;
+           left: 0cm;
+           right: 0cm;
+           height: 2cm;
+           background-color: #2a0927;
+           color: white;
+           text-align: center;
+           line-height: 35px;
+       }
 </style>
-<h1 class="uno">Lista de Clientes</h1>
+<h1 class="uno badge-dark">Lista de Clientes</h1>
 <div class="card-body">
     <div class="table-responsive">
         <table class="table table-striped ">
@@ -56,3 +70,22 @@
         </table>
     </div>
 </div>
+<footer>
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span class="maquina ">Copyright &copy; Alan Manuel 2022</span>
+            <br>
+            www.gemeloalan.online
+        </div>
+    </div>
+    <script type="text/php">
+        if ( isset($pdf) ) {
+            $pdf->page_script('
+                $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
+                $pdf->text(270, 730, "Pagina $PAGE_NUM de $PAGE_COUNT", $font, 10);
+            ');
+        }
+           
+    </script>
+
+</footer>
