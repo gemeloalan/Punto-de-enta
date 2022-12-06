@@ -330,12 +330,15 @@ btn-primary{background-color: yellowgreen;}
 }
 
 .perfil {
-    transition: transform .2s; /* Animation */
-    width: 200px;
+    transition: transform .3s;
+    /*Animation*/width: 200px;
     height: 200px;
     margin: 0 auto;
-
-  }
+    -webkit-transition: transform .3s;
+    -moz-transition: transform .3s;
+    -ms-transition: transform .3s;
+    -o-transition: transform .3s;
+}
   
   .perfil:hover {
     /*Scalingtheimageto3timesitsoriginalsize.*/transform: scale(3);

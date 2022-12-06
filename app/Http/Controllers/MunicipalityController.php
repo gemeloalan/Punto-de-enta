@@ -64,9 +64,11 @@ alert()->success('Municipio Agregado Correctamente ', 'Gracias ');
      */
     public function show($id)
     {
+        $municipalities = Municipality::paginate();
+
         $municipality = Municipality::find($id);
 
-        return view('municipality.show', compact('municipality'));
+        return view('municipality.show', compact('municipality', 'municipalities'));
     }
 
     /**

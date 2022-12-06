@@ -20,7 +20,7 @@ class ProductFactory extends Factory
     {
         return [
             'nombre' => $this->faker->randomElement(['Galleta', 'Leche', 'PC', 'Celular', 'Detergente', 'Puerta', 'CPU']),
-            'descripcion' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
+            'descripcion' => $this->faker->realText($maxNbChars = 20, $indexSize = 2),
             'precio' => $this->faker->randomfloat(2,20,4),
             'image' => $this->faker->imageUrl(),
             'stock' => $this->faker->randomDigit(8),

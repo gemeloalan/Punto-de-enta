@@ -72,7 +72,7 @@ Productos
                                                 
                                             </div>
                                         </td>
-                                            <td class="text-center">{{ $product->descripcion }}</td>
+                                            <td class="text-center ">{{ $product->descripcion }}</td>
                                             <td class="text-center">${{ $product->precio }}
                                                 <br>
                                                  c/u

@@ -16,12 +16,19 @@
                                     <span id="card_title">
                                         {{ __('Ventas') }}
                                     </span>
+                                    <div class="float-right">
+                                        <a href="{{ route('sale.pdf') }}" class="btn btn-primary btn-sm float-right"
+                                        data-placement="left">Generar PDF
+                                        <i class="far fa-solid fa-file-pdf"></i>
+                                    </a>
+                                      </div>
                                      <div class="float-right">
                                         <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                           {{ __('Realizar una venta') }}
                                         </a>
                                         
                                       </div>
+                                     
                                 </div>
                             </div>
                             @if ($message = Session::get('success'))

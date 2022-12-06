@@ -20,9 +20,7 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <title>{{ config('app.name', 'Maracas') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
 
     <!-- Scripts -->
     
@@ -50,7 +48,7 @@
                             <a class="nav-link noma" href="{{ route('municipalities.index') }}">{{ __('Municipios') }}/</a>
                             <a class="nav-link noma" href="{{ route('customers.index') }}">{{ __('Clientes') }}/</a>
                             <a class="nav-link noma" href="{{ route('sales.index') }}">{{ __('Ventas') }}/</a>
-                        <a class="nav-link noma" href="{{ route('sale.ver') }}">{{ __('Detalle de ventas') }}</a>
+                        {{-- <a class="nav-link noma" href="{{ route('sale.ver') }}">{{ __('Detalle de ventas') }}</a> --}}
                         
                         
                     </ul>

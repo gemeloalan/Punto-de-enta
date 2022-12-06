@@ -119,7 +119,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Selecciona:</h6>
                         <a class="collapse-item" href="{{ route('sales.index') }}">Ventas</a>
-                        <a class="collapse-item" href="{{ route('sale.ver') }}">Detalle de Ventas</a>
+                        {{-- <a class="collapse-item" href="{{ route('sale.ver') }}">Detalle de Ventas</a> --}}
                         <a class="collapse-item" href="{{ route('images.index') }}">Imagenes</a>
                     </div>
                 </div>
@@ -187,6 +187,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 @include('layouts.app')
+
 
                 </div>
                 <!-- /.container-fluid -->

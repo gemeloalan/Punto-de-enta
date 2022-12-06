@@ -22,6 +22,12 @@
                                             <i class="far fa-solid fa-file-pdf"></i>
                                         </a>
                                           </div>
+                                          <div class="float-right">
+                                            <a href="{{ route('sales.index') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                              {{ __('Realizar una venta') }}
+                                            </a>
+                                            
+                                          </div>
                                 </div>
                             </div>
                             @if ($message = Session::get('success'))
