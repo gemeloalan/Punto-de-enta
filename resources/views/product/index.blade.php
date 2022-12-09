@@ -64,8 +64,9 @@ Productos
                                             <td class="text-center">{{ ++$i }}</td>
                                             <td class="text-center">{{ $product->nombre }}</td>
                                             {{-- <td class="text-center"><img class="perfil" src="{{ $product->image }}"  width="80px" alt=""></td> --}}
-                                            <td class="text-center">
+                                            <td class="text-center"php>
                                                 <div class="zoom">
+                                                    
                                                     
                                                 <img class="perfil" src="{{ asset('image/' .$product->image) }}"  width="80px" alt="La imagen no esta disponible">
                                                 
@@ -159,3 +160,5 @@ Productos
 </div>
 
 @endsection
+
+

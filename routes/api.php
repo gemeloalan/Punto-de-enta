@@ -8,8 +8,7 @@ use App\Http\Controllers\apiStateController;
 use App\Http\Controllers\apiMunicipalityController;
 use App\Http\Controllers\apiProductController;
 use App\Http\Controllers\apiCustomerController;
-
-
+use App\Http\Controllers\apiSaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +30,6 @@ route::apiResource('states', apiStateController::class);
 route::apiResource('municipalities', apiMunicipalityController::class);
 route::apiResource('products', apiProductController::class);
 route::apiResource('customers', apiCustomerController::class);
+route::apiResource('sales', apiSaleController::class);
 /* route::apiResource('customers', apiCategoryController::class);
  */

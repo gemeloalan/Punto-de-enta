@@ -51,7 +51,7 @@
             {{-- <h2>Arrastra y suelta la imagen</h2>
             <span>0</span> --}}
             <button>Selecciona el archivo</button>
-            <input type="file" name="image" id="inputFile" hidden required>
+        <input type="file" name="image" id="inputFile" hidden required>
 
         </div>
         <div id="preview"></div>

@@ -68,10 +68,11 @@ class ProductController extends Controller
 
    
     public function store(Request $request)
+    D
     {
         
         request()->validate(Product::$rules);
-        $file = $request->file('image');   
+        $file = $request->file('image');
 
         $nombre =  time()."_".$file->getClientOriginalName();
         //indicamos que queremos guardar un nuevo archivo en el disco local
