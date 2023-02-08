@@ -96,14 +96,38 @@ $archivo->save();
  
     public function update(Request $request, Customer $customer)
     {
+
+        
         request()->validate(Customer::$rule);
+        $request->validate([
+            'image' => ['required','mimes:jpg,jpeg,bmp,png', 'max:2040'],
+        ]);
+        if ($request->hasFile('image')){
+            $archivoimage=$request->file('image');
+            $nombreimage=time().$archivoimage->getClientOriginalName(); 
+            $archivoimage->move(public_path().'/customer/', $nombreimage);
 
-        $customer->update($request->all());
-        alert()->success('Marca Correctamente Actualizado', 'Gracias ');
+  // esta es la línea que faltaba. Llamo a la image del modelo y le asigno la image recogida por el formulario de actualizar.          
+        $customer->image=$nombreimage; 
+        
+
+          }
+        //   return $nombreimage;
+        $customer->update($request->except('image'));
+        alert()->success('Cliente actualizado Agregada', 'Gracias ');
+ return redirect()->route('customers.index')
+             ->with('success', 'Cliente Actualizado Correctamente');
 
 
-        return redirect()->route('customers.index')
-            ->with('success', 'Cliente Actualizado Correctamente');
+        // Antiguoooo
+        // request()->validate(Customer::$rule);
+
+        // $customer->update($request->all());
+        // alert()->success('Marca Correctamente Actualizado', 'Gracias ');
+
+
+        // return redirect()->route('customers.index')
+        //     ->with('success', 'Cliente Actualizado Correctamente');
     }
 
     /**

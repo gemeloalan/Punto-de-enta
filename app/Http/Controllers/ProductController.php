@@ -68,7 +68,7 @@ class ProductController extends Controller
 
    
     public function store(Request $request)
-    D
+    
     {
         
         request()->validate(Product::$rules);

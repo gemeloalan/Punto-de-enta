@@ -34,25 +34,13 @@ class Product extends Model
 
     protected $perPage = 25;
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['nombre','descripcion','precio','stock','total','category_id','brand_id', 'image'];
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
     public function brand()
     {
         return $this->hasOne('App\Models\Brand', 'id', 'brand_id');
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
+
     public function category()
     {
         return $this->belongsTo('App\Models\Category');

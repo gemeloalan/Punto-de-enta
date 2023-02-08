@@ -48,8 +48,8 @@
     {{-- <input type="file" name="image" id="image"> --}}
 
         <div class="arrastra">
-            {{-- <h2>Arrastra y suelta la imagen</h2>
-            <span>0</span> --}}
+             <h2>Arrastra y suelta la imagen</h2>
+            <span>0</span>
             <button>Selecciona el archivo</button>
         <input type="file" name="image" id="inputFile" hidden required>
 
@@ -78,10 +78,10 @@ button.addEventListener('click', (e) => {
 input.click();
 });
 
-input .addEventListener('change', e =>{
+input.addEventListener('change', e =>{
    files = this.files;
    dropArea.classList.add("active");
-   showFiles(files);
+   showFile(files);
    dropArea.classList.remove("active");
 
 });
@@ -92,7 +92,8 @@ dropArea.addEventListener("dragover", (e) => {
     dragText.textContent = "Suelta archivos para subir";
     
 })
-dropArea.addEventListener("dragLeave", (e) => {
+dropArea.addEventListener("dragleave", (e) => {
+    e.preventDefault();
     dropArea.classList.remove("active");
     dragText.textContent = "Arrrastra y suelta imagenes";
 
@@ -103,7 +104,6 @@ dropArea.addEventListener("drop", (e) => {
     files = e.dataTransfer.files;
     showFiles(files);
     dropArea.classList.remove("active");
-
     dragText.textContent = "Arrastra y suelta archivos para subir";
 
 
@@ -114,6 +114,13 @@ dropArea.addEventListener("drop", (e) => {
 function showFiles(files){
     if(files.length === undefinded ){
           processFile(files);
+
+    }else{
+        for(const file of files){
+            processFile(file);
+            
+
+        }
     }
   
 
@@ -134,3 +141,5 @@ if(validaExe.includes(docType)){
 
 
 </script>
+
+

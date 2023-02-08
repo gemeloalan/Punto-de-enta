@@ -55,7 +55,11 @@
             
                                                     <td class="text-center">{{ ++$i }}</td>
                                                         <td class="text-center">{{ $customer->nombre }}</td>
-                                                        <td class="text-center"><img class="perfil" src="{{ asset('customer/'.$customer->image) }}"  width="80px" alt="Imagen no disponible"></td>
+                                                        <td class="text-center">
+                                                            
+                                                            <a href="{{ asset('customer/'.$customer->image) }} " ><img class="perfil" src="{{ asset('customer/'.$customer->image) }}"  width="80px" alt="Imagen no disponible">
+                                                            </a>
+                                                        </td>
 
                                                         <td class="text-center">{{ $customer->correo }}</td>
                                                         <td class="text-center">{{ $customer->telefono }}</td>

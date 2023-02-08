@@ -32,10 +32,10 @@
             {!! $errors->first('municipality_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="arrastra">
-            {{-- <h2>Arrastra y suelta la imagen</h2>
-            <span>0</span> --}}
+             <h2>Arrastra y suelta la imagen</h2>
+            <span>0</span> 
             <button>Selecciona el archivo</button>
-            <input type="file" name="image" id="inputFile" hidden required>
+            <input type="file" name="image" id="inputFile" value="{{ $customer->image }}" hidden required>
             @if ($errors->has('image'))
                 
                 <span class="text-danger">{{$errors->first('image')}}</span>
@@ -76,7 +76,7 @@ dropArea.addEventListener("dragover", (e) => {
     dragText.textContent = "Suelta archivos para subir";
     
 });
-dropArea.addEventListener("dragLeave", (e) => {
+dropArea.addEventListener("dragleave", (e) => {
     dropArea.classList.remove("active");
     dragText.textContent = "Arrrastra y suelta imagenes";
 
